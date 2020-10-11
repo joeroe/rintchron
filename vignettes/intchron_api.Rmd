@@ -1,0 +1,89 @@
+---
+title: "IntChron API"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{IntChron API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library("rintchron")
+```
+
+This vignette introduces low-level functions for interacting with IntChron's API directly.
+In most cases, the high-level interface provided by `intchron()` should be sufficient; see `vignette("intchron")`.
+
+## Constructing requests to IntChron
+
+## Crawling the IntChron record tree
+
+IntChron's records are organised into a hierarchical tree by data source ('host'), country, and individual data series (typically a site).
+For example, the canonical URLs for records from the site of Kharaneh IV (<`r intchron_url("record", "oxa", "Jordan", "Kharaneh IV")`> and <`r intchron_url("record", "nrcf", "Jordan", "Kharaneh IV")`>) encode their position in the tree:
+
+```{r khiv-tree-plot, echo=FALSE}
+library("tidygraph", warn.conflicts = FALSE)
+library("ggraph", warn.conflicts = FALSE)
+
+tbl_graph(
+  nodes = data.frame(name = c("record", "oxa", "nrcf", "Jordan", "Jordan",
+                              "Kharaneh IV", "Kharaneh IV"),
+                     type = c(rep("index", 5), rep("data", 2))),
+  edges = data.frame(from = c(1, 1, 2, 3, 4, 5),
+                     to   = c(2, 3, 4, 5, 6, 7))
+) %>% 
+  ggraph(layout = "tree") +
+  geom_edge_link() +
+  geom_node_label(aes(label = name, colour = type), label.r = unit(0, "mm")) +
+  theme_graph()
+```
+
+Here we can distinguish between 'data' records and 'index' records.
+Data records include a data series (such as a list of radiocarbon dates) and are found at the terminal nodes of the tree.
+Index records are the intermediate nodes in the tree and do not contain a data series, only a list of links to other records.
+For example, the index record at `record/oxa/Jordan` (<`r intchron_url("record", "oxa", "Jordan")`>) has a list of all the sites from Jordan in the ORAU database.
+
+There are other index records, such as `host/oxa` and `record/Jordan`, but these are aliases that eventually redirect to the canonical hierarchy described above.
+
+```{r khiv-tree-alias-plot, echo=FALSE}
+```
+
+What this means is that if you want to aggregate multiple records, whether a specific subset (e.g. records from Kharaneh IV, records from Jordan), or the whole database, you cannot rely on a single request.
+Instead, you need to 'crawl' the tree from an index node to the data nodes you're interested in.
+
+The `intchron_crawl()` function provides this functionality.
+Starting from a given index record, it will recursively follow all the links it finds until it reaches the ends of the tree, and return all the data records it finds there.
+For example, you can retrieve the entire IntChron database by crawling the whole tree from the `record` entry point:
+
+```{r crawl-everything, eval=FALSE}
+# Takes a long time!
+everything <- intchron_crawl(intchron_url("record"))
+```
+
+The remaining arguments to `intchron_crawl()` give options for refining this search with two common objectives in mind:
+
+1. Crawling the tree to retrieve a whole subset, but with certain types of records excluded.
+2. Crawling the tree to find records matching a specific search pattern.
+
+<!--
+### Crawling the tree to retrieve a subset
+
+
+### Crawling the tree to look for specific records
+
+Consider the example of Kharaneh IV above.
+The records from this site are found in two databases (ORAU and NERC-RF) and are therefore split across distant branches of the IntChron tree.
+To retrieve all the records from this site using the method above, you would have to crawl almost the entire tree and filter the results afterwards, resulting in many unnecessary requests.
+It is more efficient to tell `intchron_crawl()` to search for these specific records with ...
+
+With these parameters the crawler only follows links matching the search pattern, greatly reducing the number of requests needed.
+
+## Working with responses
+-->

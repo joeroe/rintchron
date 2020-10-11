@@ -1,0 +1,54 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# rintchron
+
+<!-- badges: start -->
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN status](https://www.r-pkg.org/badges/version/rintchron)](https://CRAN.R-project.org/package=rintchron)
+<!-- badges: end -->
+
+rintchron provides an R interface to [IntChron](https://intchron.org)), an indexing service and exchange format for chronological data such as radiocarbon dates ([Bronk Ramsey et al. 2019](https://doi.org/10.1017/RDC.2019.21)).
+It includes a user-friendly interface for querying the IntChron database, as well as low level functions for interacting  directly with the IntChron API and other resources using [its schema](https://intchron.org/schema).
+
+## Installation
+
+rintchron has not yet been released on CRAN.
+You can install the development version from GitHub using the [remotes](https://remotes.r-lib.org/) package: 
+
+``` r
+# install.package("remotes")
+remotes::install_github("joeroe/rintchron")
+```
+
+## Usage
+
+Use `intchron()` to query databases indexed by IntChron, optionally filtering the results by country and/or site.
+For example, to download records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
+
+```{r intchron-basic}
+library("rintchron")
+jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
+head(jordan)
+```
+
+A list of available databases can be retrieved with `intchron_hosts()`:
+
+```{r intchron-hosts}
+intchron_hosts()
+```
+
+For advanced uses, rintchron also provides a number of functions for interacting with the IntChron API directly; see `vignette("intchron-api")`.
+
