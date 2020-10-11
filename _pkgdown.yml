@@ -1,0 +1,20 @@
+authors:
+  Joe Roe:
+    href: "https://joeroe.io"
+
+template:
+  opengraph:
+    twitter:
+      creator: "@joeroe90"
+      card: summary
+
+reference:
+- title: "Query IntChron"
+  desc: "High-level functions for querying databases indexed by IntChron."
+- contents:
+  - intchron
+  - intchron_hosts
+- title: "IntChron API"
+  desc: "Low-level functions for interacting with the IntChron API directly."
+- contents:
+  - starts_with("intchron_")

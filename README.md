@@ -83,4 +83,4 @@ A list of available databases can be retrieved with `intchron_hosts()`:
 
 For advanced uses, rintchron also provides a number of functions for
 interacting with the IntChron API directly; see
-`vignette("intchron-api")`.
+`vignette("intchron_api")`.
