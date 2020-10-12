@@ -1,3 +1,9 @@
+home:
+  title: "R Interface to IntChron"
+  description: "R package providing an interface for IntChron, an indexing service and exchange format for chronological data such as radiocarbon dates."
+
+url: https://rintchron.joeroe.io
+
 authors:
   Joe Roe:
     href: "https://joeroe.io"
