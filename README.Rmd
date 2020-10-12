@@ -13,16 +13,19 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rintchron
+# rintchron: R interface to IntChron
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![CRAN status](https://www.r-pkg.org/badges/version/rintchron)](https://CRAN.R-project.org/package=rintchron)
 [![R build status](https://github.com/joeroe/rintchron/workflows/R-CMD-check/badge.svg)](https://github.com/joeroe/rintchron/actions)
 <!-- badges: end -->
 
-rintchron provides an R interface to [IntChron](https://intchron.org), an indexing service and exchange format for chronological data such as radiocarbon dates ([Bronk Ramsey et al. 2019](https://doi.org/10.1017/RDC.2019.21)).
+**rintchron** provides an R interface to [IntChron](https://intchron.org), an indexing service and exchange format for chronological data such as radiocarbon dates ([Bronk Ramsey et al. 2019](https://doi.org/10.1017/RDC.2019.21)).
 It includes a user friendly interface for querying databases indexed by IntChron, as well as low level functions for interacting  directly with the IntChron API and other resources using [its schema](https://intchron.org/schema).
+
+For a quick start guide to querying IntChron's databases see the [basic usage](https://rintchron.joeroe.io/articles/rintchron) vignette (`vignette("rintchron")`).
+For advanced users, low level functions for interacting with the IntChron API directly are described in the [IntChron API](https://rintchron.joeroe.io/articles/intchron_api) vignette (`vignette("intchron_api")`).
 
 ## Installation
 
@@ -36,20 +39,16 @@ remotes::install_github("joeroe/rintchron")
 
 ## Usage
 
-Use [`intchron()`](https://rintchron.joeroe.io/reference/intchron) to query databases indexed by IntChron, optionally filtering the results by country and/or site.
-For example, to download records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
+Use [`intchron()`](https://rintchron.joeroe.io/reference/intchron) to query databases indexed by IntChron.
+You can refine the query by database (use `intchron_hosts()` to see what's available) and optionally by country and site.
+For example, to download records from Jordan in the ORAU and NERC Radiocarbon Facility databases:
 
 ```{r intchron-basic}
 library("rintchron")
-jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
-head(jordan)
-```
 
-A list of available databases can be retrieved with [`intchron_hosts()`](https://rintchron.joeroe.io/reference/intchron.html):
-
-```{r intchron-hosts}
+# List available databases
 intchron_hosts()
+
+# Query IntChron
+intchron(c("oxa", "nrcf"), countries = "Jordan")
 ```
-
-For advanced uses, rintchron also provides a number of functions for interacting with the IntChron API directly; see [`vignette("intchron_api")`](https://rintchron.joeroe.io/articles/intchron_api).
-

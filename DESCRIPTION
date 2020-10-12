@@ -1,6 +1,6 @@
 Package: rintchron
 Type: Package
-Title: R Interface to IntChron
+Title: Interface to IntChron
 Version: 0.1.0.9000
 Authors@R: person("Joe", "Roe", email = "joe@joeroe.io",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-1011-1244"))
@@ -28,6 +28,7 @@ Imports:
     httr
 Suggests: 
     knitr,
+    roxygen2,
     rmarkdown,
     ggplot2,
     ggraph,
