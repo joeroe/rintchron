@@ -30,7 +30,7 @@ intchron_request <- function(url, strict = FALSE) {
   url <- purrr::map_chr(url, utils::URLencode, repeated = FALSE)
 
   response <- purrr::map(
-    url, function(url, pb) {
+    url, function(url) {
       res <- httr::RETRY("GET", url,
                          httr::user_agent("https://github.com/joeroe/rintchron"))
 
@@ -66,8 +66,7 @@ intchron_request <- function(url, strict = FALSE) {
           return(NA)
         }
       }
-    },
-    pb = pb
+    }
   )
 
   names(response) <- intchron_url_to_name(url)
