@@ -36,7 +36,7 @@ remotes::install_github("joeroe/rintchron")
 
 ## Usage
 
-Use `intchron()` to query databases indexed by IntChron, optionally filtering the results by country and/or site.
+Use [`intchron()`](https://rintchron.joeroe.io/reference/intchron) to query databases indexed by IntChron, optionally filtering the results by country and/or site.
 For example, to download records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
 
 ```{r intchron-basic}
@@ -45,11 +45,11 @@ jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
 head(jordan)
 ```
 
-A list of available databases can be retrieved with `intchron_hosts()`:
+A list of available databases can be retrieved with [`intchron_hosts()`](https://rintchron.joeroe.io/reference/intchron.html):
 
 ```{r intchron-hosts}
 intchron_hosts()
 ```
 
-For advanced uses, rintchron also provides a number of functions for interacting with the IntChron API directly; see `vignette("intchron_api")`.
+For advanced uses, rintchron also provides a number of functions for interacting with the IntChron API directly; see [`vignette("intchron_api")`](https://rintchron.joeroe.io/articles/intchron_api).
 

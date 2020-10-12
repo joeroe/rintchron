@@ -35,9 +35,10 @@ development version from GitHub using the
 Usage
 -----
 
-Use `intchron()` to query databases indexed by IntChron, optionally
-filtering the results by country and/or site. For example, to download
-records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
+Use [`intchron()`](https://rintchron.joeroe.io/reference/intchron) to
+query databases indexed by IntChron, optionally filtering the results by
+country and/or site. For example, to download records from Jordan in the
+ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
 
     library("rintchron")
     jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
@@ -71,7 +72,8 @@ records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
     #> 5 0.00099000
     #> 6 0.00166000
 
-A list of available databases can be retrieved with `intchron_hosts()`:
+A list of available databases can be retrieved with
+[`intchron_hosts()`](https://rintchron.joeroe.io/reference/intchron.html):
 
     intchron_hosts()
     #>       host                             database
@@ -83,4 +85,4 @@ A list of available databases can be retrieved with `intchron_hosts()`:
 
 For advanced uses, rintchron also provides a number of functions for
 interacting with the IntChron API directly; see
-`vignette("intchron_api")`.
+[`vignette("intchron_api")`](https://rintchron.joeroe.io/articles/intchron_api).
