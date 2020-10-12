@@ -2,19 +2,30 @@
 % Please edit documentation in R/intchron_api.R
 \name{intchron_request}
 \alias{intchron_request}
-\title{Request resources from IntChron}
+\title{Request records from IntChron}
 \usage{
-intchron_request(url)
+intchron_request(url, strict = FALSE)
 }
 \arguments{
-\item{url}{Vector of addresses to IntChron resources. See \code{\link[=intchron_url]{intchron_url()}}.}
+\item{url}{Vector of addresses to IntChron records. See \code{\link[=intchron_url]{intchron_url()}}.}
+
+\item{strict}{If \code{TRUE}, will treat non-success HTTP status codes as fatal
+errors. If \code{FALSE} (the default), will attempt to recover from them. See
+details.}
 }
 \value{
-A list of responses.
+A list of parsed responses.
 }
 \description{
-Gets the requested resources from IntChron and parses them with
-\code{\link[jsonlite:fromJSON]{jsonlite::fromJSON()}}.
+Gets the requested records from IntChron in JSON format and parses them to a
+named list.
+}
+\details{
+This function is intended to make batch requests to IntChron, so by default
+it tries to recover from HTTP errors wherever possible. Requests for records
+that don't exist or which produce a server error return \code{NA} with a warning.
+To disable this behaviour and stop execution when HTTP errors occur, set
+\code{strict = TRUE}.
 }
 \examples{
 intchron_request(intchron_url("record", "oxa", "Jordan", "Dhuweila"))

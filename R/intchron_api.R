@@ -1,24 +1,65 @@
 # Low-level functions for interacting with the IntChron REST API
 
-#' Request resources from IntChron
+#' Request records from IntChron
 #'
-#' Gets the requested resources from IntChron and parses them with
-#' [jsonlite::fromJSON()].
+#' Gets the requested records from IntChron in JSON format and parses them to a
+#' named list.
 #'
-#' @param url Vector of addresses to IntChron resources. See [intchron_url()].
+#' @param url Vector of addresses to IntChron records. See [intchron_url()].
+#' @param strict If `TRUE`, will treat non-success HTTP status codes as fatal
+#'  errors. If `FALSE` (the default), will attempt to recover from them. See
+#'  details.
 #'
 #' @return
-#' A list of responses.
+#' A list of parsed responses.
+#'
+#' @details
+#' This function is intended to make batch requests to IntChron, so by default
+#' it tries to recover from HTTP errors wherever possible. Requests for records
+#' that don't exist or which produce a server error return `NA` with a warning.
+#' To disable this behaviour and stop execution when HTTP errors occur, set
+#' `strict = TRUE`.
 #'
 #' @export
 #'
 #' @examples
 #' intchron_request(intchron_url("record", "oxa", "Jordan", "Dhuweila"))
-intchron_request <- function(url) {
+intchron_request <- function(url, strict = FALSE) {
   # message(paste0("[DEBUG] Requesting <", url, ">", collapse = "\n"))
   url <- intchron_url_format(url, "json")
   url <- purrr::map_chr(url, utils::URLencode, repeated = FALSE)
-  response <- purrr::map(url, jsonlite::fromJSON, flatten = FALSE)
+
+  response <- purrr::map(
+    url, function(url) {
+      res <- httr::GET(url)
+      if (res$status_code == 200) {
+        # Detect pseudo-404s
+        #   IntChron doesn't seem to ever return a 404 status, it just silently
+        #   returns the home page. But we can detect this by checking if the
+        #   content-type is html instead of the requested plain text/JSON.
+        if (httr::http_type(res) != "text/plain") {
+          if (strict) {
+            stop("Request to <", url, "> did not return an IntChron record. Is the URL correct?",
+                 call. = FALSE)
+          }
+          else {
+            warning("Request to <", url, "> did not return an IntChron record. Is the URL correct?",
+                    call. = FALSE)
+            return(NA)
+          }
+        }
+        else {
+          jsonlite::parse_json(httr::content(res, "text"), simplifyVector = TRUE)
+        }
+      }
+      else {
+        if (strict) httr::stop_for_status(res, paste0("get record from <", url, ">"))
+        httr::warn_for_status(res, paste0("get record from <", url, ">"))
+        return(NA)
+      }
+    }
+  )
+
   names(response) <- intchron_url_to_name(url)
   return(response)
 }

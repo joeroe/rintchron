@@ -24,7 +24,8 @@ Imports:
     stringr,
     jsonlite,
     purrr,
-    curl
+    curl,
+    httr
 Suggests: 
     knitr,
     rmarkdown,
