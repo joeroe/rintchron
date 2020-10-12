@@ -24,11 +24,10 @@ as low level functions for interacting directly with the IntChron API
 and other resources using [its schema](https://intchron.org/schema).
 
 For a quick start guide to querying IntChron’s databases see the [basic
-usage](https://rintchron.joeroe.io/articles/rintchron) vignette
-(`vignette("rintchron")`). For advanced users, low level functions for
-interacting with the IntChron API directly are described in the
-[IntChron API](https://rintchron.joeroe.io/articles/intchron_api)
-vignette (`vignette("intchron_api")`).
+usage vignette](https://rintchron.joeroe.io/articles/rintchron). For
+advanced users, low level functions for interacting with the IntChron
+API directly are described in the [IntChron API
+vignette](https://rintchron.joeroe.io/articles/intchron_api).
 
 Installation
 ------------

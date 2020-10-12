@@ -24,8 +24,8 @@ knitr::opts_chunk$set(
 **rintchron** provides an R interface to [IntChron](https://intchron.org), an indexing service and exchange format for chronological data such as radiocarbon dates ([Bronk Ramsey et al. 2019](https://doi.org/10.1017/RDC.2019.21)).
 It includes a user friendly interface for querying databases indexed by IntChron, as well as low level functions for interacting  directly with the IntChron API and other resources using [its schema](https://intchron.org/schema).
 
-For a quick start guide to querying IntChron's databases see the [basic usage](https://rintchron.joeroe.io/articles/rintchron) vignette (`vignette("rintchron")`).
-For advanced users, low level functions for interacting with the IntChron API directly are described in the [IntChron API](https://rintchron.joeroe.io/articles/intchron_api) vignette (`vignette("intchron_api")`).
+For a quick start guide to querying IntChron's databases see the [basic usage vignette](https://rintchron.joeroe.io/articles/rintchron).
+For advanced users, low level functions for interacting with the IntChron API directly are described in the [IntChron API vignette](https://rintchron.joeroe.io/articles/intchron_api).
 
 ## Installation
 

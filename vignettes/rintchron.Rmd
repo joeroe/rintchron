@@ -1,6 +1,7 @@
 ---
 title: "Basic usage"
 output: rmarkdown::html_vignette
+bibliography: references.bib
 vignette: >
   %\VignetteIndexEntry{Basic usage}
   %\VignetteEngine{knitr::rmarkdown}
@@ -14,21 +15,64 @@ knitr::opts_chunk$set(
 )
 ```
 
+[IntChron](https://intchron.org) is an indexing service for chronological data such as radiocarbon dates [@Bronk_Ramsey2019].
+It specifies a standard exchange format and provides a consistent API for querying databases that use its schema.
+The rintchron package provides a simple interface for querying these databases with `intchron()`, explained in this vignette.
+
+The package also includes low level functions for interacting with the IntChron API directly, described in `vignette("intchron-api")`.
+
 ```{r setup}
 library("rintchron")
 ```
 
-Use `intchron()` to query databases indexed by IntChron, optionally filtering the results by country and/or site.
-For example, to download records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
+## Querying IntChron
 
-```{r intchron-basic}
-library("rintchron")
-jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
-head(jordan)
-```
-
-A list of available databases can be retrieved with `intchron_hosts()`:
+Use `intchron()` to query databases indexed by IntChron.
+At a minimum, you will need to specify which databases or 'hosts' you want to query.^[There are several reasons for this. First and foremost, it reduces the number of requests a given query has to make to the IntChron API. Querying all hosts isn't usually necessary because IntChron indexes different types of database (e.g. radiocarbon dates from ORAU, palaeoclimate records from INTIMATE) which are rarely combined in a single analysis. Also, since IntChron is an indexing service, it is designed to include more databases over time, meaning analysis code that is not explicit about which hosts it needs is likely to break or at least become much less efficient in the future. But if you do need to, you can query all hosts by setting `host = "all"`.]
+Use `intchron_hosts()` to see a list of currently available databases:
 
 ```{r intchron-hosts}
 intchron_hosts()
 ```
+
+The first argument to `intchron()` should be a the 'host' code of the database you want to query, or a vector of hosts to query more than one (e.g. `intchron(hosts = c("oxa", "nrcf"))`).
+For example, to return the entire South Africa Radiocarbon Database ('sadb'):
+
+```{r intchron-sadb}
+intchron("sadb")
+```
+
+You can further refine your query by specifying the locations you are interested in with the `countries` and `sites` parameters.
+Like `hosts`, these can also accept a vector of locations.
+For example, to download records from Jordan in the ORAU (`oxa`) and NERC-RF (`nrcf`) databases:
+
+```{r intchron-jordan}
+jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
+jordan
+```
+
+## Working with IntChron records
+
+With the default setting `tabulate = TRUE`, `intchron()` returns a table of records, ready for you to use in your analysis:
+
+```{r intchron-analysis}
+library("dplyr", warn.conflicts = FALSE)
+
+# Summarise radiocarbon dates available from sites in Jordan
+jordan %>% 
+  distinct(labcode, .keep_all = TRUE) %>% 
+  group_by(record_site) %>% 
+  summarise(n_dates = n(), .groups = "drop_last")
+```
+
+Note the use of `distinct(labcode)` above.
+The data from IntChron usually requires some cleaning; for example, the ORAU and NERC-RF databases contain many duplicate radiocarbon dates.
+The [c14bazAAR](https://docs.ropensci.org/c14bazAAR/) package [@Schmid2019] includes many useful functions for tidying radiocarbon data.
+
+You may find the [stratigraphr](http://stratigraphr.joeroe.io/) and [rcarbon](https://github.com/ahb108/rcarbon/) [@Crema2020] packages useful for further analysis of radiocarbon dates in R.
+
+In some situations you might want to access the full records returned by IntChron.
+Setting `tabulate = FALSE` will return the raw JSON responses as a named list.
+See `vignette("intchron-api")` for some tips on how to work with these objects.
+
+## References

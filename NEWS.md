@@ -1,4 +1,4 @@
-# rintchron 0.1.0
+# rintchron 0.1.1
 
 Initial release, including:
 
@@ -9,4 +9,4 @@ Initial release, including:
   * `intchron_request()` and `intchron_url()` help construct requests to IntChron.
   * `intchron_crawl()` recursively retrieves records.
   * `intchron_extract()` and `intchron_tabulate()` help wrangle response data.
-* Vignettes: `vignette("intchron")` and `vignette("intchron-api")`
+* Vignettes: `vignette("rintchron")` and `vignette("intchron-api")`
