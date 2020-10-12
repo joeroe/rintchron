@@ -1,9 +1,12 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "rintchron",
   "description": "An interface to 'IntChron' (<https://intchron.org)>), an indexing\n    service and exchange format for chronological data such as radiocarbon dates\n    (Bronk Ramsey et al. 2019) <doi:10.1017/RDC.2019.21>. Includes a \n    user friendly interface for querying databases indexed by 'IntChron', as \n    well as low  level functions for interacting  directly with the 'IntChron' \n    API and other resources using its schema.",
-  "name": "rintchron: R Interface to IntChron",
+  "name": "rintchron: Interface to IntChron",
   "codeRepository": "https://github.com/joeroe/rintchron",
   "relatedLink": "https://rintchron.joeroe.io",
   "issueTracker": "https://github.com/joeroe/rintchron/issues",
@@ -48,6 +51,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "roxygen2",
+      "name": "roxygen2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=roxygen2"
     },
     {
       "@type": "SoftwareApplication",
@@ -192,11 +207,42 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=httr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "dplyr",
+      "name": "dplyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=dplyr"
     }
   ],
   "releaseNotes": "https://github.com/joeroe/rintchron/blob/master/NEWS.md",
   "readme": "https://github.com/joeroe/rintchron/blob/master/README.md",
-  "fileSize": "275.887KB",
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "keywords": ["r", "rstats", "r-package", "opendata", "archaeology", "radiocarbon-dates"]
+  "fileSize": "796.861KB",
+  "developmentStatus": "https://www.repostatus.org/#wip",
+  "keywords": [
+    "r",
+    "rstats",
+    "r-package",
+    "opendata",
+    "archaeology",
+    "radiocarbon-dates"
+  ]
 }
