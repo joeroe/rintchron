@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R Interface to IntChron • rintchron</title>
+<title>Interface to IntChron • rintchron</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="R Interface to IntChron">
+<script src="pkgdown.js"></script><meta property="og:title" content="Interface to IntChron">
 <meta property="og:description" content="An interface to IntChron (&lt;https://intchron.org)&gt;), an indexing
     service and exchange format for chronological data such as radiocarbon dates
     (Bronk Ramsey et al. 2019) &lt;doi:10.1017/RDC.2019.21&gt;. Includes a 
@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">rintchron</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -52,6 +52,9 @@
   </a>
 </li>
 <li>
+  <a href="articles/rintchron.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -62,9 +65,6 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/intchron.html">Basic usage</a>
-    </li>
-    <li>
       <a href="articles/intchron_api.html">IntChron API</a>
     </li>
   </ul>
@@ -92,12 +92,13 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rintchron" class="section level1">
+<div id="rintchron-r-interface-to-intchron" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#rintchron" class="anchor"></a>rintchron</h1></div>
+<a href="#rintchron-r-interface-to-intchron" class="anchor"></a>rintchron: R interface to IntChron</h1></div>
 <!-- badges: start -->
 
-<p>rintchron provides an R interface to <a href="https://intchron.org">IntChron</a>, an indexing service and exchange format for chronological data such as radiocarbon dates (<a href="https://doi.org/10.1017/RDC.2019.21">Bronk Ramsey et al. 2019</a>). It includes a user friendly interface for querying databases indexed by IntChron, as well as low level functions for interacting directly with the IntChron API and other resources using <a href="https://intchron.org/schema">its schema</a>.</p>
+<p><strong>rintchron</strong> provides an R interface to <a href="https://intchron.org">IntChron</a>, an indexing service and exchange format for chronological data such as radiocarbon dates (<a href="https://doi.org/10.1017/RDC.2019.21">Bronk Ramsey et al. 2019</a>). It includes a user friendly interface for querying databases indexed by IntChron, as well as low level functions for interacting directly with the IntChron API and other resources using <a href="https://intchron.org/schema">its schema</a>.</p>
+<p>For a quick start guide to querying IntChron’s databases see the <a href="https://rintchron.joeroe.io/articles/rintchron">basic usage</a> vignette (<code><a href="articles/rintchron.html">vignette("rintchron")</a></code>). For advanced users, low level functions for interacting with the IntChron API directly are described in the <a href="https://rintchron.joeroe.io/articles/intchron_api">IntChron API</a> vignette (<code><a href="articles/intchron_api.html">vignette("intchron_api")</a></code>).</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -108,47 +109,39 @@
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>Use <code><a href="reference/intchron.html">intchron()</a></code> to query databases indexed by IntChron, optionally filtering the results by country and/or site. For example, to download records from Jordan in the ORAU (<code>oxa</code>) and NERC-RF (<code>nrcf</code>) databases:</p>
+<p>Use <a href="https://rintchron.joeroe.io/reference/intchron"><code>intchron()</code></a> to query databases indexed by IntChron. You can refine the query by database (use <code><a href="reference/intchron.html">intchron_hosts()</a></code> to see what’s available) and optionally by country and site. For example, to download records from Jordan in the ORAU and NERC Radiocarbon Facility databases:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(<span class="st">"rintchron"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a>jordan &lt;-<span class="st"> </span><span class="kw">intchron</span>(<span class="kw">c</span>(<span class="st">"oxa"</span>, <span class="st">"nrcf"</span>), <span class="dt">countries =</span> <span class="st">"Jordan"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">head</span>(jordan)</span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt;    record_site record_country  record_name record_longitude record_latitude</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; 1 Araq ed-Dubb         Jordan Araq ed-Dubb          32.3167         35.6667</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; 2  Ayn Qasiyah         Jordan  Ayn Qasiyah          36.8181         31.8339</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt; 3  Ayn Qasiyah         Jordan  Ayn Qasiyah          36.8181         31.8339</span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; 4  Ayn Qasiyah         Jordan  Ayn Qasiyah          36.8181         31.8339</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; 5  Ayn Qasiyah         Jordan  Ayn Qasiyah          36.8181         31.8339</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; 6  Ayn Qasiyah         Jordan  Ayn Qasiyah          36.8181         31.8339</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt;   series_type   labcode longitude latitude          sample material</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; 1  R_Datelist  OxA-2567   32.3167  35.6667           WY130 charcoal</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt; 2  R_Datelist OxA-18829   36.8181  31.8339 Sample Number 8 charcoal</span></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 3  R_Datelist OxA-18830   36.8181  31.8339 Sample Number 8 charcoal</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 4  R_Datelist OxA-18831   36.8181  31.8339      Sample #33 charcoal</span></span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; 5  R_Datelist OxA-18832   36.8181  31.8339      Sample #24 charcoal</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt; 6  R_Datelist OxA-18833   36.8181  31.8339    Sample #2009 charcoal</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt;                     species    d13C r_date r_date_sigma qual     F14C</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; 1                         - -26.100   9950          100      0.289778</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 2 Amygdalus (possibly almon -25.859  17550           75      0.112520</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; 3 Amygdalus (possibly almon -26.004  17490           75      0.113330</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; 4            chenopodiaceae -11.272  17555           75      0.112460</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; 5                 Amygdalus -23.747  17495           70      0.113260</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="co">#&gt; 6           Chenopodiaeceae -11.412   9195           40      0.318350</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt;   F14C_sigma</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="co">#&gt; 1 0.00360734</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="co">#&gt; 2 0.00108000</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#&gt; 3 0.00104000</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt; 4 0.00102000</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co">#&gt; 5 0.00099000</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt; 6 0.00166000</span></span></code></pre></div>
-<p>A list of available databases can be retrieved with <code><a href="reference/intchron.html">intchron_hosts()</a></code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">intchron_hosts</span>()</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;       host                             database</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; 1  egyptdb        Egyptian Radiocarbon Database</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; 2 intimate                    INTIMATE Database</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; 3     nrcf   NERC Radiocarbon Facility (Oxford)</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 4      oxa  Oxford Radiocarbon Accelerator Unit</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; 5     sadb Southern Africa Radiocarbon Database</span></span></code></pre></div>
-<p>For advanced uses, rintchron also provides a number of functions for interacting with the IntChron API directly; see <code><a href="articles/intchron_api.html">vignette("intchron_api")</a></code>.</p>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># List available databases</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">intchron_hosts</span>()</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;   host     database                            </span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; 1 egyptdb  Egyptian Radiocarbon Database       </span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; 2 intimate INTIMATE Database                   </span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; 3 nrcf     NERC Radiocarbon Facility (Oxford)  </span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; 4 oxa      Oxford Radiocarbon Accelerator Unit </span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; 5 sadb     Southern Africa Radiocarbon Database</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># Query IntChron</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">intchron</span>(<span class="kw">c</span>(<span class="st">"oxa"</span>, <span class="st">"nrcf"</span>), <span class="dt">countries =</span> <span class="st">"Jordan"</span>)</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; # A tibble: 156 x 18</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt;    record_site record_country record_name record_longitude record_latitude</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt;  1 Araq ed-Du… Jordan         Araq ed-Du…             32.3            35.7</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt;  2 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt;  3 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt;  4 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt;  5 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="co">#&gt;  6 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt;  7 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="co">#&gt;  8 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="co">#&gt;  9 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#&gt; 10 Burqu' 02   Jordan         Burqu' 02               37.8            32.7</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt; # … with 146 more rows, and 13 more variables: series_type &lt;chr&gt;,</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="co">#&gt; #   labcode &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, sample &lt;chr&gt;,</span></span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt; #   material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;, r_date &lt;int&gt;,</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a><span class="co">#&gt; #   r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -181,7 +174,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
+<li><a href="https://www.repostatus.org/#wip"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 <li><a href="https://CRAN.R-project.org/package=rintchron"><img src="https://www.r-pkg.org/badges/version/rintchron" alt="CRAN status"></a></li>
 <li><a href="https://github.com/joeroe/rintchron/actions"><img src="https://github.com/joeroe/rintchron/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>

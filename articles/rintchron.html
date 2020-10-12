@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IntChron API • rintchron</title>
+<title>Basic usage • rintchron</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="IntChron API">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Basic usage">
 <meta property="og:description" content="rintchron">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:creator" content="@joeroe90">
@@ -85,14 +85,14 @@
 
       
 
-      </header><script src="intchron_api_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="rintchron_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>IntChron API</h1>
+      <h1 data-toc-skip>Basic usage</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/joeroe/rintchron/blob/master/vignettes/intchron_api.Rmd"><code>vignettes/intchron_api.Rmd</code></a></small>
-      <div class="hidden name"><code>intchron_api.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/joeroe/rintchron/blob/master/vignettes/rintchron.Rmd"><code>vignettes/rintchron.Rmd</code></a></small>
+      <div class="hidden name"><code>rintchron.Rmd</code></div>
 
     </div>
 
@@ -100,52 +100,39 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rintchron.joeroe.io">"rintchron"</a></span><span class="op">)</span></pre></div>
-<p>This vignette introduces low-level functions for interacting with IntChron’s API directly. In most cases, the high-level interface provided by <code><a href="../reference/intchron.html">intchron()</a></code> should be sufficient; see <code>vignette("intchron")</code>.</p>
-<div id="constructing-requests-to-intchron" class="section level2">
-<h2 class="hasAnchor">
-<a href="#constructing-requests-to-intchron" class="anchor"></a>Constructing requests to IntChron</h2>
-</div>
-<div id="crawling-the-intchron-record-tree" class="section level2">
-<h2 class="hasAnchor">
-<a href="#crawling-the-intchron-record-tree" class="anchor"></a>Crawling the IntChron record tree</h2>
-<p>IntChron’s records are organised into a hierarchical tree by data source (‘host’), country, and individual data series (typically a site). For example, the canonical URLs for records from the site of Kharaneh IV (&lt;<a href="https://intchron.org/record/oxa/Jordan/Kharaneh" class="uri">https://intchron.org/record/oxa/Jordan/Kharaneh</a> IV&gt; and &lt;<a href="https://intchron.org/record/nrcf/Jordan/Kharaneh" class="uri">https://intchron.org/record/nrcf/Jordan/Kharaneh</a> IV&gt;) encode their position in the tree:</p>
-<pre><code>#&gt; Loading required package: ggplot2</code></pre>
-<p><img src="intchron_api_files/figure-html/khiv-tree-plot-1.png" width="700"></p>
-<p>Here we can distinguish between ‘data’ records and ‘index’ records. Data records include a data series (such as a list of radiocarbon dates) and are found at the terminal nodes of the tree. Index records are the intermediate nodes in the tree and do not contain a data series, only a list of links to other records. For example, the index record at <code>record/oxa/Jordan</code> (<a href="https://intchron.org/record/oxa/Jordan" class="uri">https://intchron.org/record/oxa/Jordan</a>) has a list of all the sites from Jordan in the ORAU database.</p>
-<p>There are other index records, such as <code>host/oxa</code> and <code>record/Jordan</code>, but these are aliases that eventually redirect to the canonical hierarchy described above.</p>
-<p>What this means is that if you want to aggregate multiple records, whether a specific subset (e.g. records from Kharaneh IV, records from Jordan), or the whole database, you cannot rely on a single request. Instead, you need to ‘crawl’ the tree from an index node to the data nodes you’re interested in.</p>
-<p>The <code><a href="../reference/intchron_crawl.html">intchron_crawl()</a></code> function provides this functionality. Starting from a given index record, it will recursively follow all the links it finds until it reaches the ends of the tree, and return all the data records it finds there. For example, you can retrieve the entire IntChron database by crawling the whole tree from the <code>record</code> entry point:</p>
+<p>Use <code><a href="../reference/intchron.html">intchron()</a></code> to query databases indexed by IntChron, optionally filtering the results by country and/or site. For example, to download records from Jordan in the ORAU (<code>oxa</code>) and NERC-RF (<code>nrcf</code>) databases:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rintchron.joeroe.io">"rintchron"</a></span><span class="op">)</span>
+<span class="va">jordan</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/intchron.html">intchron</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"oxa"</span>, <span class="st">"nrcf"</span><span class="op">)</span>, countries <span class="op">=</span> <span class="st">"Jordan"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">jordan</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 x 18</span>
+<span class="co">#&gt;   record_site record_country record_name record_longitude record_latitude</span>
+<span class="co">#&gt;   &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Araq ed-Du… Jordan         Araq ed-Du…             32.3            35.7</span>
+<span class="co">#&gt; 2 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt; 3 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt; 4 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt; 5 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt; 6 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt; # … with 13 more variables: series_type &lt;chr&gt;, labcode &lt;chr&gt;, longitude &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   latitude &lt;dbl&gt;, sample &lt;chr&gt;, material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   r_date &lt;int&gt;, r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;</span></pre></div>
+<p>A list of available databases can be retrieved with <code><a href="../reference/intchron.html">intchron_hosts()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co"># Takes a long time!</span>
-<span class="va">everything</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/intchron_crawl.html">intchron_crawl</a></span><span class="op">(</span><span class="fu"><a href="../reference/intchron_url.html">intchron_url</a></span><span class="op">(</span><span class="st">"record"</span><span class="op">)</span><span class="op">)</span></pre></div>
-<p>The remaining arguments to <code><a href="../reference/intchron_crawl.html">intchron_crawl()</a></code> give options for refining this search with two common objectives in mind:</p>
-<ol style="list-style-type: decimal">
-<li>Crawling the tree to retrieve a whole subset, but with certain types of records excluded.</li>
-<li>Crawling the tree to find records matching a specific search pattern.</li>
-</ol>
-<!--
-### Crawling the tree to retrieve a subset
-
-
-### Crawling the tree to look for specific records
-
-Consider the example of Kharaneh IV above.
-The records from this site are found in two databases (ORAU and NERC-RF) and are therefore split across distant branches of the IntChron tree.
-To retrieve all the records from this site using the method above, you would have to crawl almost the entire tree and filter the results afterwards, resulting in many unnecessary requests.
-It is more efficient to tell `intchron_crawl()` to search for these specific records with ...
-
-With these parameters the crawler only follows links matching the search pattern, greatly reducing the number of requests needed.
-
-## Working with responses
--->
-</div>
+<span class="fu"><a href="../reference/intchron.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 5 x 2</span>
+<span class="co">#&gt;   host     database                            </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span>
+<span class="co">#&gt; 1 egyptdb  Egyptian Radiocarbon Database       </span>
+<span class="co">#&gt; 2 intimate INTIMATE Database                   </span>
+<span class="co">#&gt; 3 nrcf     NERC Radiocarbon Facility (Oxford)  </span>
+<span class="co">#&gt; 4 oxa      Oxford Radiocarbon Accelerator Unit </span>
+<span class="co">#&gt; 5 sadb     Southern Africa Radiocarbon Database</span></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 

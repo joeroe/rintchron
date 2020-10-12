@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  intchron: intchron.html
   intchron_api: intchron_api.html
-last_built: 2020-10-12T09:44Z
+  rintchron: rintchron.html
+last_built: 2020-10-12T11:54Z
 
