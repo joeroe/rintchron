@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rintchron.joeroe.io/index.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/intchron.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/intchron_crawl.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/intchron_extract.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/intchron_request.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/intchron_tabulate.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/intchron_url.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/reference/rintchron-package.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/articles/intchron_api.html</loc>
+  </url>
+  <url>
+    <loc>https://rintchron.joeroe.io/articles/rintchron.html</loc>
+  </url>
+</urlset>
