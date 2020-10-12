@@ -30,9 +30,11 @@ intchron_request <- function(url, strict = FALSE) {
   url <- purrr::map_chr(url, utils::URLencode, repeated = FALSE)
 
   response <- purrr::map(
-    url, function(url) {
-      res <- httr::GET(url)
-      if (res$status_code == 200) {
+    url, function(url, pb) {
+      res <- httr::RETRY("GET", url,
+                         httr::user_agent("https://github.com/joeroe/rintchron"))
+
+      if (!httr::http_error(res)) {
         # Detect pseudo-404s
         #   IntChron doesn't seem to ever return a 404 status, it just silently
         #   returns the home page. But we can detect this by checking if the
@@ -49,15 +51,23 @@ intchron_request <- function(url, strict = FALSE) {
           }
         }
         else {
-          jsonlite::parse_json(httr::content(res, "text"), simplifyVector = TRUE)
+          return(
+            jsonlite::parse_json(httr::content(res, "text"),
+                                 simplifyVector = TRUE)
+          )
         }
       }
       else {
-        if (strict) httr::stop_for_status(res, paste0("get record from <", url, ">"))
-        httr::warn_for_status(res, paste0("get record from <", url, ">"))
-        return(NA)
+        if (strict) {
+          httr::stop_for_status(res, paste0("get record from <", url, ">"))
+        }
+        else {
+          httr::warn_for_status(res, paste0("get record from <", url, ">"))
+          return(NA)
+        }
       }
-    }
+    },
+    pb = pb
   )
 
   names(response) <- intchron_url_to_name(url)

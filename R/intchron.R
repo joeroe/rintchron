@@ -60,7 +60,7 @@ intchron <- function(hosts,
   }
   entry <- purrr::pmap(entry, intchron_url)
 
-  # Crawl
+  # Start crawling
   responses <- purrr::map(entry, intchron_crawl)
   # First level of nesting is by entry point, which we don't need.
   responses <- purrr::flatten(responses)
