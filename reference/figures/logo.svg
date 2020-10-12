@@ -411,14 +411,14 @@
        style="fill:#ffffff;fill-opacity:1" /></mask><filter
      inkscape:collect="always"
      style="color-interpolation-filters:sRGB"
-     id="filter1313"
-     x="-0.00768"
-     width="1.01536"
-     y="-0.00768"
-     height="1.01536"><feGaussianBlur
+     id="filter1118"
+     x="-0.00432"
+     width="1.00864"
+     y="-0.00432"
+     height="1.00864"><feGaussianBlur
        inkscape:collect="always"
-       stdDeviation="2.7264"
-       id="feGaussianBlur1315" /></filter></defs><sodipodi:namedview
+       stdDeviation="1.5336"
+       id="feGaussianBlur1120" /></filter></defs><sodipodi:namedview
    pagecolor="#ffffff"
    bordercolor="#666666"
    borderopacity="1"
@@ -468,7 +468,7 @@
    id="image1323"
    x="-45"
    y="0"
-   style="stroke-width:1.12989;opacity:1;filter:url(#filter1313)"
+   style="stroke-width:1.12989;opacity:1;filter:url(#filter1118)"
    mask="url(#mask1381)" />
 <linearGradient
    id="SVGID_1_"
@@ -523,7 +523,7 @@
    class="st2"
    d="M734.9,637.4V213.1l-29.3-16.9L427.8,35.8L367.5,1l-60.3,34.8L29.4,196.2L0.1,213.1v424.2l29.3,16.9  l281.3,162.4l56.9,32.8l56.9-32.8l281.3-162.4L734.9,637.4z M29.4,621.5V231l50-28.9L367.5,35.8l0,0l287.2,165.8l50.9,29.4v390.5  L367.5,816.7L29.4,621.5z"
    id="path17"
-   style="fill:#282828;fill-opacity:1" /><g
+   style="fill:#fb4934;fill-opacity:1" /><g
    aria-label="RINTCHRON"
    id="text1387"
    style="font-style:normal;font-weight:normal;font-size:96px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><path
