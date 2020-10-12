@@ -7,9 +7,9 @@ Authors@R: person("Joe", "Roe", email = "joe@joeroe.io",
 Description: An interface to 'IntChron' (<https://intchron.org)>), an indexing
     service and exchange format for chronological data such as radiocarbon dates
     (Bronk Ramsey et al. 2019) <doi:10.1017/RDC.2019.21>. Includes a 
-    user-friendly interface for querying the 'IntChron' database, as well as low 
-    level functions for interacting  directly with the 'IntChron' API and other
-    resources using its schema.
+    user friendly interface for querying databases indexed by 'IntChron', as 
+    well as low  level functions for interacting  directly with the 'IntChron' 
+    API and other resources using its schema.
 URL: https://rintchron.joeroe.io, https://github.com/joeroe/rintchron
 BugReports: https://github.com/joeroe/rintchron/issues
 License: MIT + file LICENSE

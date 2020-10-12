@@ -14,13 +14,13 @@ status](https://www.r-pkg.org/badges/version/rintchron)](https://CRAN.R-project.
 status](https://github.com/joeroe/rintchron/workflows/R-CMD-check/badge.svg)](https://github.com/joeroe/rintchron/actions)
 <!-- badges: end -->
 
-rintchron provides an R interface to [IntChron](https://intchron.org)),
+rintchron provides an R interface to [IntChron](https://intchron.org),
 an indexing service and exchange format for chronological data such as
 radiocarbon dates ([Bronk Ramsey et
-al. 2019](https://doi.org/10.1017/RDC.2019.21)). It includes a
-user-friendly interface for querying the IntChron database, as well as
-low level functions for interacting directly with the IntChron API and
-other resources using [its schema](https://intchron.org/schema).
+al. 2019](https://doi.org/10.1017/RDC.2019.21)). It includes a user
+friendly interface for querying databases indexed by IntChron, as well
+as low level functions for interacting directly with the IntChron API
+and other resources using [its schema](https://intchron.org/schema).
 
 Installation
 ------------
