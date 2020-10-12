@@ -26,7 +26,8 @@ Imports:
     purrr,
     curl,
     httr,
-    tibble
+    tibble,
+    dplyr
 Suggests: 
     knitr,
     roxygen2,
