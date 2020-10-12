@@ -20,10 +20,9 @@ intchron_hosts()
 into a data frame. Set \code{FALSE} to get the raw data from IntChron.}
 }
 \value{
-At least \code{hosts} must be specified. Use \code{intchron_hosts()} to get a list of
-currently available hosts, or "all" to retrieve data from any database.
+\code{intchron()}: a \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
 
-A data frame, or if \code{tabulate = FALSE}, a list of IntChron responses.
+\code{intchron_hosts}: a \code{tibble} of available databases with their 'host' code.
 }
 \description{
 IntChron is an indexing service for chronological data from multiple sources.
@@ -31,7 +30,10 @@ This function queries IntChron to retrieve data from the specified database
 ('host'), countries and sites.
 }
 \details{
-See \code{vignette("intchron")}.
+At least \code{hosts} must be specified. Use \code{intchron_hosts()} to get a list of
+currently available hosts, or "all" to retrieve data from any database.
+
+See \code{vignette("rintchron")} for further details.
 }
 \examples{
 # List available databases

@@ -25,7 +25,8 @@ Imports:
     jsonlite,
     purrr,
     curl,
-    httr
+    httr,
+    tibble
 Suggests: 
     knitr,
     roxygen2,

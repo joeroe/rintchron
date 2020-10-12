@@ -73,5 +73,6 @@ intchron_tabulate_series <- function(series_list, header) {
   # Append references
   # TODO
 
+  data <- tibble::as_tibble(data)
   return(data)
 }

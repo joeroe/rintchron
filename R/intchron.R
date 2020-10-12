@@ -13,13 +13,15 @@
 #'  into a data frame. Set `FALSE` to get the raw data from IntChron.
 #'
 #' @details
-#' See `vignette("intchron")`.
-#'
-#' @return
 #' At least `hosts` must be specified. Use `intchron_hosts()` to get a list of
 #' currently available hosts, or "all" to retrieve data from any database.
 #'
-#' A data frame, or if `tabulate = FALSE`, a list of IntChron responses.
+#' See `vignette("rintchron")` for further details.
+#'
+#' @return
+#' `intchron()`: a `tibble`, or if `tabulate = FALSE`, a list, of IntChron responses.
+#'
+#' `intchron_hosts`: a `tibble` of available databases with their 'host' code.
 #'
 #' @export
 #'
@@ -83,5 +85,6 @@ intchron_hosts <- function() {
   hosts <- hosts[,2:1]
   hosts$host <- intchron_url_to_name(hosts$host)
   hosts$host <- stringr::str_remove(hosts$host, stringr::coll("host/"))
+  hosts <- tibble::as_tibble(hosts)
   return(hosts)
 }
