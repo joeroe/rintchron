@@ -32,7 +32,7 @@ For advanced users, low level functions for interacting with the IntChron API di
 rintchron has not yet been released on CRAN.
 You can install the development version from GitHub using the [remotes](https://remotes.r-lib.org/) package: 
 
-``` r
+```{r intchron-install, eval=FALSE}
 # install.package("remotes")
 remotes::install_github("joeroe/rintchron")
 ```
