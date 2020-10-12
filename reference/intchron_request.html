@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Request resources from IntChron — intchron_request • rintchron</title>
+<title>Request records from IntChron — intchron_request • rintchron</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Request resources from IntChron — intchron_request" />
-<meta property="og:description" content="Gets the requested resources from IntChron and parses them with
-jsonlite::fromJSON()." />
+<meta property="og:title" content="Request records from IntChron — intchron_request" />
+<meta property="og:description" content="Gets the requested records from IntChron in JSON format and parses them to a
+named list." />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@joeroe90" />
 <meta name="twitter:site" content="@joeroe90" />
@@ -130,30 +130,43 @@ jsonlite::fromJSON()." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Request resources from IntChron</h1>
+    <h1>Request records from IntChron</h1>
     <small class="dont-index">Source: <a href='https://github.com/joeroe/rintchron/blob/master/R/intchron_api.R'><code>R/intchron_api.R</code></a></small>
     <div class="hidden name"><code>intchron_request.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Gets the requested resources from IntChron and parses them with
-<code><a href='https://rdrr.io/pkg/jsonlite/man/fromJSON.html'>jsonlite::fromJSON()</a></code>.</p>
+    <p>Gets the requested records from IntChron in JSON format and parses them to a
+named list.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>intchron_request</span><span class='op'>(</span><span class='va'>url</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>intchron_request</span><span class='op'>(</span><span class='va'>url</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>url</th>
-      <td><p>Vector of addresses to IntChron resources. See <code><a href='intchron_url.html'>intchron_url()</a></code>.</p></td>
+      <td><p>Vector of addresses to IntChron records. See <code><a href='intchron_url.html'>intchron_url()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>strict</th>
+      <td><p>If <code>TRUE</code>, will treat non-success HTTP status codes as fatal
+errors. If <code>FALSE</code> (the default), will attempt to recover from them. See
+details.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of responses.</p>
+    <p>A list of parsed responses.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is intended to make batch requests to IntChron, so by default
+it tries to recover from HTTP errors wherever possible. Requests for records
+that don't exist or which produce a server error return <code>NA</code> with a warning.
+To disable this behaviour and stop execution when HTTP errors occur, set
+<code>strict = TRUE</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>intchron_request</span><span class='op'>(</span><span class='fu'><a href='intchron_url.html'>intchron_url</a></span><span class='op'>(</span><span class='st'>"record"</span>, <span class='st'>"oxa"</span>, <span class='st'>"Jordan"</span>, <span class='st'>"Dhuweila"</span><span class='op'>)</span><span class='op'>)</span>
@@ -208,7 +221,7 @@ jsonlite::fromJSON()." />
 #&gt; [1] "2020-09-18T10:03:40+00:00"
 #&gt; 
 #&gt; $`record/oxa/Jordan/Dhuweila`$compilation$retrieved
-#&gt; [1] "2020-10-11T18:19:11+00:00"
+#&gt; [1] "2020-10-12T07:55:14+00:00"
 #&gt; 
 #&gt; 
 #&gt; </div></pre>
