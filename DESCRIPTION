@@ -31,5 +31,7 @@ Suggests:
     rmarkdown,
     ggplot2,
     ggraph,
-    tidygraph
+    tidygraph,
+    spelling
 VignetteBuilder: knitr
+Language: en-GB
