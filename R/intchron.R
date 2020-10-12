@@ -21,7 +21,7 @@
 #' @return
 #' `intchron()`: a `tibble`, or if `tabulate = FALSE`, a list, of IntChron responses.
 #'
-#' `intchron_hosts`: a `tibble` of available databases with their 'host' code.
+#' `intchron_hosts()`: a `tibble` of available databases with their 'host' code.
 #'
 #' @export
 #'

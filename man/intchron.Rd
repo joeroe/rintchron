@@ -22,7 +22,7 @@ into a data frame. Set \code{FALSE} to get the raw data from IntChron.}
 \value{
 \code{intchron()}: a \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
 
-\code{intchron_hosts}: a \code{tibble} of available databases with their 'host' code.
+\code{intchron_hosts()}: a \code{tibble} of available databases with their 'host' code.
 }
 \description{
 IntChron is an indexing service for chronological data from multiple sources.
