@@ -112,9 +112,9 @@
 <div id="querying-intchron" class="section level2">
 <h2 class="hasAnchor">
 <a href="#querying-intchron" class="anchor"></a>Querying IntChron</h2>
-<p>Use <code><a href="../reference/intchron.html">intchron()</a></code> to query databases indexed by IntChron. At a minimum, you will need to specify which databases or ‘hosts’ you want to query.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Use <code><a href="../reference/intchron.html">intchron_hosts()</a></code> to see a list of currently available databases:</p>
+<p>Use <code><a href="../reference/intchron.html">intchron()</a></code> to query databases indexed by IntChron. At a minimum, you will need to specify which databases or ‘hosts’ you want to query.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Use <code><a href="../reference/intchron_hosts.html">intchron_hosts()</a></code> to see a list of currently available databases:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/intchron.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="../reference/intchron_hosts.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 5 x 2</span>
 <span class="co">#&gt;   host     database                            </span>
 <span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span>
@@ -165,12 +165,38 @@
 <span class="co">#&gt; #   labcode &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, sample &lt;chr&gt;,</span>
 <span class="co">#&gt; #   material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;, r_date &lt;int&gt;,</span>
 <span class="co">#&gt; #   r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;</span></pre></div>
+<p>Use <code><a href="../reference/intchron_hosts.html">intchron_countries()</a></code> to get a list of available countries on IntChron:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 109 x 1</span>
+<span class="co">#&gt;    country   </span>
+<span class="co">#&gt;    &lt;chr&gt;     </span>
+<span class="co">#&gt;  1 Albania   </span>
+<span class="co">#&gt;  2 Algeria   </span>
+<span class="co">#&gt;  3 Andorra   </span>
+<span class="co">#&gt;  4 Angola    </span>
+<span class="co">#&gt;  5 Antarctica</span>
+<span class="co">#&gt;  6 Argentina </span>
+<span class="co">#&gt;  7 Armenia   </span>
+<span class="co">#&gt;  8 Australia </span>
+<span class="co">#&gt;  9 Austria   </span>
+<span class="co">#&gt; 10 Bahrain   </span>
+<span class="co">#&gt; # … with 99 more rows</span></pre></div>
+<p>Or in a specific databases:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="st">"egyptdb"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 x 2</span>
+<span class="co">#&gt;   host    country              </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                </span>
+<span class="co">#&gt; 1 egyptdb Egypt                </span>
+<span class="co">#&gt; 2 egyptdb Palestinian Territory</span>
+<span class="co">#&gt; 3 egyptdb Sudan</span></pre></div>
 </div>
 <div id="working-with-intchron-records" class="section level2">
 <h2 class="hasAnchor">
 <a href="#working-with-intchron-records" class="anchor"></a>Working with IntChron records</h2>
 <p>With the default setting <code>tabulate = TRUE</code>, <code><a href="../reference/intchron.html">intchron()</a></code> returns a table of records, ready for you to use in your analysis:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
+<div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co"># Summarise radiocarbon dates available from sites in Jordan</span>
