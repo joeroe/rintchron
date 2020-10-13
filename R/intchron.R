@@ -3,12 +3,12 @@
 #' Get data from IntChron
 #'
 #' IntChron is an indexing service for chronological data from multiple sources.
-#' This function queries IntChron to retrieve data from the specified database
-#' ('host'), countries and sites.
+#' This function queries databases indexed by IntChron ('hosts'), optionally
+#' filtering records by country and site.
 #'
-#' @param hosts Databases to be retrieved. See details.
-#' @param countries Vector of countries to be retrieved. See details.
-#' @param sites Vector of sites to be retrieved. See details.
+#' @param hosts Vector of databases to be retrieved, or "all".
+#' @param countries (Optional) Vector of countries to be retrieved.
+#' @param sites (Optional) Vector of sites to be retrieved.
 #' @param tabulate If `TRUE` (the default), the data retrieved will be combined
 #'  into a data frame. Set `FALSE` to get the raw data from IntChron.
 #'
@@ -19,18 +19,15 @@
 #' See `vignette("rintchron")` for further details.
 #'
 #' @return
-#' `intchron()`: a `tibble`, or if `tabulate = FALSE`, a list, of IntChron responses.
+#' A `tibble`, or if `tabulate = FALSE`, a list, of IntChron responses.
 #'
-#' `intchron_hosts()`: a `tibble` of available databases with their 'host' code.
+#' @family functions for querying IntChron
 #'
 #' @export
 #'
 #' @examples
-#' # List available databases
-#' intchron_hosts()
-#'
-#' # Get all data from Jordan
-#' intchron("all", countries = "Jordan")
+#' # Get data from Jordan from the ORAU and NERC databases
+#' intchron(c("oxa", "nrcf"), countries = "Jordan")
 intchron <- function(hosts,
                      countries = NA,
                      sites = NA,
@@ -41,12 +38,7 @@ intchron <- function(hosts,
     hosts <- "all"
   }
   else {
-    available_hosts <- intchron_hosts()$host
-    if (!all(hosts %in% available_hosts)) {
-      bad_hosts <- hosts[!hosts %in% available_hosts]
-      stop("Hosts not available on IntChron: ",
-           paste0(bad_hosts, collapse = ", "))
-    }
+    intchron_assert_host(hosts)
   }
 
   # Determine entry record(s) for crawling
@@ -75,8 +67,33 @@ intchron <- function(hosts,
   }
 }
 
-#' @rdname intchron
+
+# Helper functions --------------------------------------------------------
+
+#' List available databases and countries on IntChron
+#'
+#' These functions query IntChron to list the available databases ('hosts') or
+#' countries (optionally filtering by host).
+#'
+#' @param hosts Vector of databases to query (for list of available countries).
+#'  Leave `NA` to list countries from all hosts.
+#'
+#' @return
+#' A `tibble` of available hosts or countries.
+#'
+#' @family functions for querying IntChron
+#'
 #' @export
+#'
+#' @examples
+#' # List available hosts
+#' intchron_hosts()
+#'
+#' # List available countries
+#' intchron_countries()
+#'
+#' # List available countries for specific hosts
+#' intchron_countries(c("intimate", "egyptdb"))
 intchron_hosts <- function() {
   hosts <- intchron_request(intchron_url("host"))
   hosts <- intchron_extract(hosts, "records")
@@ -87,4 +104,46 @@ intchron_hosts <- function() {
   hosts$host <- stringr::str_remove(hosts$host, stringr::coll("host/"))
   hosts <- tibble::as_tibble(hosts)
   return(hosts)
+}
+
+#' @rdname intchron_hosts
+#' @export
+intchron_countries <- function(hosts = NA) {
+  if (all(is.na(hosts))) {
+    countries <- intchron_request(intchron_url("record"))
+  }
+  else {
+    intchron_assert_host(hosts)
+    urls <- purrr::map_chr(hosts, ~intchron_url(.x, "record"))
+    countries <- intchron_request(urls)
+  }
+
+  countries <- intchron_extract(countries, "records")
+  countries <- purrr::map(countries, "country")
+  countries <- purrr::map_dfr(countries, ~data.frame(country = .x), .id = "host")
+
+  if (all(is.na(hosts))) {
+    countries$host <- NULL
+  }
+  else {
+    countries$host <- stringr::str_remove(countries$host, stringr::coll("/record"))
+  }
+
+  countries <- tibble::as_tibble(countries)
+  return(countries)
+}
+
+
+# Utility functions (unexported) ------------------------------------------
+
+#' @noRd
+intchron_assert_host <- function(hosts) {
+  available_hosts <- intchron_hosts()$host
+  if (!all(hosts %in% available_hosts)) {
+    bad_hosts <- hosts[!hosts %in% available_hosts]
+    stop("Hosts not available on IntChron: ",
+         paste0(bad_hosts, collapse = ", "),
+         call. = FALSE)
+  }
+  invisible(hosts)
 }

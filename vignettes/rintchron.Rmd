@@ -51,6 +51,18 @@ jordan <- intchron(c("oxa", "nrcf"), countries = "Jordan")
 jordan
 ```
 
+Use `intchron_countries()` to get a list of available countries on IntChron:
+
+```{r intchron-countries}
+intchron_countries()
+```
+
+Or in a specific databases:
+
+```{r intchron-countries2}
+intchron_countries("egyptdb")
+```
+
 ## Working with IntChron records
 
 With the default setting `tabulate = TRUE`, `intchron()` returns a table of records, ready for you to use in your analysis:

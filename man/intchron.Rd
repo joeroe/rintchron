@@ -2,32 +2,27 @@
 % Please edit documentation in R/intchron.R
 \name{intchron}
 \alias{intchron}
-\alias{intchron_hosts}
 \title{Get data from IntChron}
 \usage{
 intchron(hosts, countries = NA, sites = NA, tabulate = TRUE)
-
-intchron_hosts()
 }
 \arguments{
-\item{hosts}{Databases to be retrieved. See details.}
+\item{hosts}{Vector of databases to be retrieved, or "all".}
 
-\item{countries}{Vector of countries to be retrieved. See details.}
+\item{countries}{(Optional) Vector of countries to be retrieved.}
 
-\item{sites}{Vector of sites to be retrieved. See details.}
+\item{sites}{(Optional) Vector of sites to be retrieved.}
 
 \item{tabulate}{If \code{TRUE} (the default), the data retrieved will be combined
 into a data frame. Set \code{FALSE} to get the raw data from IntChron.}
 }
 \value{
-\code{intchron()}: a \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
-
-\code{intchron_hosts()}: a \code{tibble} of available databases with their 'host' code.
+A \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
 }
 \description{
 IntChron is an indexing service for chronological data from multiple sources.
-This function queries IntChron to retrieve data from the specified database
-('host'), countries and sites.
+This function queries databases indexed by IntChron ('hosts'), optionally
+filtering records by country and site.
 }
 \details{
 At least \code{hosts} must be specified. Use \code{intchron_hosts()} to get a list of
@@ -36,9 +31,11 @@ currently available hosts, or "all" to retrieve data from any database.
 See \code{vignette("rintchron")} for further details.
 }
 \examples{
-# List available databases
-intchron_hosts()
-
-# Get all data from Jordan
-intchron("all", countries = "Jordan")
+# Get data from Jordan from the ORAU and NERC databases
+intchron(c("oxa", "nrcf"), countries = "Jordan")
 }
+\seealso{
+Other functions for querying IntChron: 
+\code{\link{intchron_hosts}()}
+}
+\concept{functions for querying IntChron}
