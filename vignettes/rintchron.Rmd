@@ -57,10 +57,10 @@ Use `intchron_countries()` to get a list of available countries on IntChron:
 intchron_countries()
 ```
 
-Or in a specific databases:
+Or in specific databases:
 
 ```{r intchron-countries2}
-intchron_countries("egyptdb")
+intchron_countries(c("intimate", "egyptdb"))
 ```
 
 ## Working with IntChron records
