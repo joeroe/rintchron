@@ -29,7 +29,7 @@ intchron_extract <- function(x, what) {
   )
 }
 
-#' Extract a data frame from IntChron
+#' Extract a data frame from IntChron responses
 #'
 #' Takes a list of responses from an IntChron request and extracts the data
 #' series and associated metadata as a data frame.
@@ -37,7 +37,7 @@ intchron_extract <- function(x, what) {
 #' @param x A list of IntChron responses.
 #'
 #' @return
-#' A data frame.
+#' A `tibble` combining the data from all responses.
 #'
 #' @family functions for interacting with the IntChron API
 #'

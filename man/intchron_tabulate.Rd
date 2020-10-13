@@ -2,7 +2,7 @@
 % Please edit documentation in R/response.R
 \name{intchron_tabulate}
 \alias{intchron_tabulate}
-\title{Extract a data frame from IntChron}
+\title{Extract a data frame from IntChron responses}
 \usage{
 intchron_tabulate(x)
 }
@@ -10,7 +10,7 @@ intchron_tabulate(x)
 \item{x}{A list of IntChron responses.}
 }
 \value{
-A data frame.
+A \code{tibble} combining the data from all responses.
 }
 \description{
 Takes a list of responses from an IntChron request and extracts the data
