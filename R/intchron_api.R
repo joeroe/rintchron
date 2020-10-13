@@ -20,6 +20,8 @@
 #' To disable this behaviour and stop execution when HTTP errors occur, set
 #' `strict = TRUE`.
 #'
+#' @family functions for interacting with the IntChron API
+#'
 #' @export
 #'
 #' @examples
@@ -83,6 +85,8 @@ intchron_request <- function(url, strict = FALSE) {
 #'
 #' @return
 #' Character vector of URLs.
+#'
+#' @family functions for interacting with the IntChron API
 #'
 #' @export
 #'

@@ -15,6 +15,8 @@
 #' See `vignette("intchron-api")` for a detailed explanation of the structure of
 #' the IntChron record tree and the crawling algorithm used.
 #'
+#' @family functions for interacting with the IntChron API
+#'
 #' @return
 #' A list of responses from IntChron.
 #'

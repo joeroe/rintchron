@@ -18,9 +18,8 @@ reference:
 - title: "Query IntChron"
   desc: "High-level functions for querying databases indexed by IntChron."
 - contents:
-  - intchron
-  - intchron_hosts
+  - has_concept("functions for querying IntChron")
 - title: "IntChron API"
   desc: "Low-level functions for interacting with the IntChron API directly."
 - contents:
-  - starts_with("intchron_")
+  - has_concept("functions for interacting with the IntChron API")

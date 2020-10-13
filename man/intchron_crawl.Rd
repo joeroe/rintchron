@@ -24,3 +24,11 @@ The ignore parameter can be used to refine the search.
 See \code{vignette("intchron-api")} for a detailed explanation of the structure of
 the IntChron record tree and the crawling algorithm used.
 }
+\seealso{
+Other functions for interacting with the IntChron API: 
+\code{\link{intchron_extract}()},
+\code{\link{intchron_request}()},
+\code{\link{intchron_tabulate}()},
+\code{\link{intchron_url}()}
+}
+\concept{functions for interacting with the IntChron API}

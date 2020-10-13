@@ -12,6 +12,8 @@
 #' @return
 #' `what` from `x`.
 #'
+#' @family functions for interacting with the IntChron API
+#'
 #' @export
 #'
 #' @examples
@@ -36,6 +38,8 @@ intchron_extract <- function(x, what) {
 #'
 #' @return
 #' A data frame.
+#'
+#' @family functions for interacting with the IntChron API
 #'
 #' @export
 #'

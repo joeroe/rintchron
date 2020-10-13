@@ -23,3 +23,11 @@ access to specific named elements of those objects.
 khiv <- intchron_request(intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV"))
 intchron_extract(khiv, "data_url")
 }
+\seealso{
+Other functions for interacting with the IntChron API: 
+\code{\link{intchron_crawl}()},
+\code{\link{intchron_request}()},
+\code{\link{intchron_tabulate}()},
+\code{\link{intchron_url}()}
+}
+\concept{functions for interacting with the IntChron API}

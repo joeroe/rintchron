@@ -20,3 +20,11 @@ series and associated metadata as a data frame.
 khiv <- intchron_request(intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV"))
 intchron_tabulate(khiv)
 }
+\seealso{
+Other functions for interacting with the IntChron API: 
+\code{\link{intchron_crawl}()},
+\code{\link{intchron_extract}()},
+\code{\link{intchron_request}()},
+\code{\link{intchron_url}()}
+}
+\concept{functions for interacting with the IntChron API}

@@ -25,3 +25,11 @@ intchron_url("record", "oxa", "Jordan", "Dhuweila")
 # Multiple resources
 intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV")
 }
+\seealso{
+Other functions for interacting with the IntChron API: 
+\code{\link{intchron_crawl}()},
+\code{\link{intchron_extract}()},
+\code{\link{intchron_request}()},
+\code{\link{intchron_tabulate}()}
+}
+\concept{functions for interacting with the IntChron API}

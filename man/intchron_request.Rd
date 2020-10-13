@@ -30,3 +30,11 @@ To disable this behaviour and stop execution when HTTP errors occur, set
 \examples{
 intchron_request(intchron_url("record", "oxa", "Jordan", "Dhuweila"))
 }
+\seealso{
+Other functions for interacting with the IntChron API: 
+\code{\link{intchron_crawl}()},
+\code{\link{intchron_extract}()},
+\code{\link{intchron_tabulate}()},
+\code{\link{intchron_url}()}
+}
+\concept{functions for interacting with the IntChron API}
