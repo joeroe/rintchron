@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • rintchron</title>
+<title>Read a CSV file from IntChron — read_intchron_csv • rintchron</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,12 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Read a CSV file from IntChron — read_intchron_csv" />
+<meta property="og:description" content="Reads records in the CSV format exported by by IntChron. These are regular
+CSV files with a few elements of non-standard formatting that mean they can't
+be directly parsed by e.g. read.csv() or readr::read_csv() (see details).
+It is usually more robust to retrieve data from IntChron in JSON format using
+intchron() or intchron_request()." />
 <meta property="og:image" content="https://rintchron.joeroe.io/logo.svg" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="@joeroe90" />
@@ -69,7 +74,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -134,110 +139,53 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Read a CSV file from IntChron</h1>
+    <small class="dont-index">Source: <a href='https://github.com/joeroe/rintchron/blob/master/R/read.R'><code>R/read.R</code></a></small>
+    <div class="hidden name"><code>read_intchron_csv.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Reads records in the CSV format exported by by IntChron. These are regular
+CSV files with a few elements of non-standard formatting that mean they can't
+be directly parsed by e.g. <code><a href='https://rdrr.io/r/utils/read.table.html'>read.csv()</a></code> or <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code> (see details).</p>
+<p>It is usually more robust to retrieve data from IntChron in JSON format using
+<code><a href='intchron.html'>intchron()</a></code> or <code><a href='intchron_request.html'>intchron_request()</a></code>.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>read_intchron_csv</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-query-intchron" class="hasAnchor"><a href="#section-query-intchron" class="anchor"></a>Query IntChron</h2>
-          <p class="section-desc"><p>High-level functions for querying databases indexed by IntChron.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="intchron.html">intchron()</a></code> </p>
-        </td>
-        <td><p>Get data from IntChron</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intchron_hosts.html">intchron_hosts()</a></code> <code><a href="intchron_hosts.html">intchron_countries()</a></code> </p>
-        </td>
-        <td><p>List available databases and countries on IntChron</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-read-and-write" class="hasAnchor"><a href="#section-read-and-write" class="anchor"></a>Read and write</h2>
-          <p class="section-desc"><p>Functions for reading and writing data in IntChron’s file formats.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="read_intchron_csv.html">read_intchron_csv()</a></code> </p>
-        </td>
-        <td><p>Read a CSV file from IntChron</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-intchron-api" class="hasAnchor"><a href="#section-intchron-api" class="anchor"></a>IntChron API</h2>
-          <p class="section-desc"><p>Low-level functions for interacting with the IntChron API directly.</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="intchron_crawl.html">intchron_crawl()</a></code> </p>
-        </td>
-        <td><p>Recursively retrieve IntChron records</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intchron_extract.html">intchron_extract()</a></code> </p>
-        </td>
-        <td><p>Extract an element from an IntChron record</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intchron_request.html">intchron_request()</a></code> </p>
-        </td>
-        <td><p>Request records from IntChron</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intchron_tabulate.html">intchron_tabulate()</a></code> </p>
-        </td>
-        <td><p>Extract a data frame from IntChron responses</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="intchron_url.html">intchron_url()</a></code> </p>
-        </td>
-        <td><p>Construct the address of IntChron resources</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>file</th>
+      <td><p>CSV records exported from IntChron; either a path to a downloaded
+file, a URL, or literal data. Use <code><a href='https://readr.tidyverse.org/reference/clipboard.html'>readr::clipboard()</a></code> to read from the
+system clipboard.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A <code>tibble</code> containing the data from the record. Associated metadata is
+discarded.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>CSV files exported from IntChron have the following non-standard formatting:</p><ul>
+<li><p>Comment lines are denoted with '#' and contain metadata before and after
+the table of data itself.</p></li>
+<li><p>The comment line immediately above the data contains the column headings</p></li>
+<li><p>A variable number of empty columns occur at the beginning of rows</p></li>
+<li><p>A trailing comma occurs at the end of every row except the header</p></li>
+<li><p>Missing values may be coded as: "", "-"</p></li>
+</ul>
+
+<p>Beyond this, some data tables are malformed (e.g. they contain unmatched
+quotes) and cannot be parsed without an error.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

@@ -182,15 +182,25 @@
 <span class="co">#&gt;  9 Austria   </span>
 <span class="co">#&gt; 10 Bahrain   </span>
 <span class="co">#&gt; # … with 99 more rows</span></pre></div>
-<p>Or in a specific databases:</p>
+<p>Or in specific databases:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="st">"egyptdb"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 2</span>
-<span class="co">#&gt;   host    country              </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;                </span>
-<span class="co">#&gt; 1 egyptdb Egypt                </span>
-<span class="co">#&gt; 2 egyptdb Palestinian Territory</span>
-<span class="co">#&gt; 3 egyptdb Sudan</span></pre></div>
+<span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"intimate"</span>, <span class="st">"egyptdb"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 13 x 2</span>
+<span class="co">#&gt;    host     country                </span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                  </span>
+<span class="co">#&gt;  1 intimate ""                     </span>
+<span class="co">#&gt;  2 intimate "France"               </span>
+<span class="co">#&gt;  3 intimate "Greenland"            </span>
+<span class="co">#&gt;  4 intimate "Ireland"              </span>
+<span class="co">#&gt;  5 intimate "Italy"                </span>
+<span class="co">#&gt;  6 intimate "Norway"               </span>
+<span class="co">#&gt;  7 intimate "Romania"              </span>
+<span class="co">#&gt;  8 intimate "Slovenia"             </span>
+<span class="co">#&gt;  9 intimate "Switzerland"          </span>
+<span class="co">#&gt; 10 intimate "UK"                   </span>
+<span class="co">#&gt; 11 egyptdb  "Egypt"                </span>
+<span class="co">#&gt; 12 egyptdb  "Palestinian Territory"</span>
+<span class="co">#&gt; 13 egyptdb  "Sudan"</span></pre></div>
 </div>
 <div id="working-with-intchron-records" class="section level2">
 <h2 class="hasAnchor">
