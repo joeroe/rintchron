@@ -2,7 +2,7 @@
 % Please edit documentation in R/intchron.R
 \name{intchron}
 \alias{intchron}
-\title{Get data from IntChron}
+\title{Query IntChron}
 \usage{
 intchron(hosts, countries = NA, sites = NA, tabulate = TRUE)
 }
@@ -21,8 +21,8 @@ A \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
 }
 \description{
 IntChron is an indexing service for chronological data from multiple sources.
-This function queries databases indexed by IntChron ('hosts'), optionally
-filtering records by country and site.
+This function gets records from databases ('hosts') indexed by IntChron,
+optionally filtering by country and/or site.
 }
 \details{
 At least \code{hosts} must be specified. Use \code{intchron_hosts()} to get a list of

@@ -1,10 +1,10 @@
 # High-level interface to IntChron
 
-#' Get data from IntChron
+#' Query IntChron
 #'
 #' IntChron is an indexing service for chronological data from multiple sources.
-#' This function queries databases indexed by IntChron ('hosts'), optionally
-#' filtering records by country and site.
+#' This function gets records from databases ('hosts') indexed by IntChron,
+#' optionally filtering by country and/or site.
 #'
 #' @param hosts Vector of databases to be retrieved, or "all".
 #' @param countries (Optional) Vector of countries to be retrieved.
