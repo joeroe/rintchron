@@ -19,6 +19,10 @@ reference:
   desc: "High-level functions for querying databases indexed by IntChron."
 - contents:
   - has_concept("functions for querying IntChron")
+- title: "Read and write"
+  desc: "Functions for reading and writing data in IntChron's file formats."
+- contents:
+  - has_concept("read and write functions")
 - title: "IntChron API"
   desc: "Low-level functions for interacting with the IntChron API directly."
 - contents:

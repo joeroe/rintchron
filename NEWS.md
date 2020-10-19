@@ -9,4 +9,6 @@ Initial release, including:
   * `intchron_request()` and `intchron_url()` help construct requests to IntChron.
   * `intchron_crawl()` recursively retrieves records.
   * `intchron_extract()` and `intchron_tabulate()` help wrangle response data.
+* Read and write functions:
+  * `read_intchron_csv()` for CSV files.
 * Vignettes: `vignette("rintchron")` and `vignette("intchron-api")`
