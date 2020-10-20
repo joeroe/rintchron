@@ -43,11 +43,11 @@ intchron_request <- function(url, strict = FALSE) {
         #   content-type is html instead of the requested plain text/JSON.
         if (httr::http_type(res) != "text/plain") {
           if (strict) {
-            stop("Request to <", url, "> did not return an IntChron record. Is the URL correct?",
+            stop("Request to <", url, "> did not return an IntChron record.\nIs the URL correct?",
                  call. = FALSE)
           }
           else {
-            warning("Request to <", url, "> did not return an IntChron record. Is the URL correct?",
+            warning("Request to <", url, "> did not return an IntChron record.\nIs the URL correct?",
                     call. = FALSE)
             return(NA)
           }
