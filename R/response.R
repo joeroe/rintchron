@@ -37,7 +37,9 @@ intchron_extract <- function(x, what) {
 #' @param x A list of IntChron responses.
 #'
 #' @return
-#' A `tibble` combining the data from all responses.
+#' A `tibble` combining the data from all responses. Bibliographic references
+#' are returned as a list column containing a vector of citation keys (ref: or
+#' doi:) for each record.
 #'
 #' @family functions for interacting with the IntChron API
 #'
@@ -59,7 +61,7 @@ intchron_tabulate <- function(x) {
 #' @param header List of metadata from IntChron.
 #'
 #' @return
-#' A data frame.
+#' A tibble.
 #'
 #' @noRd
 intchron_tabulate_series <- function(series_list, header) {
@@ -75,7 +77,9 @@ intchron_tabulate_series <- function(series_list, header) {
   data <- cbind(header, data)
 
   # Append references
-  # TODO
+  refs <- purrr::pluck(series_list, 1, "refs")
+  refs <- paste0(refs)
+  data <- cbind(data, refs = refs)
 
   data <- tibble::as_tibble(data)
   return(data)

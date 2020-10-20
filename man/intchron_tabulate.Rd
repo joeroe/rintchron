@@ -10,7 +10,9 @@ intchron_tabulate(x)
 \item{x}{A list of IntChron responses.}
 }
 \value{
-A \code{tibble} combining the data from all responses.
+A \code{tibble} combining the data from all responses. Bibliographic references
+are returned as a list column containing a vector of citation keys (ref: or
+doi:) for each record.
 }
 \description{
 Takes a list of responses from an IntChron request and extracts the data
