@@ -1,10 +1,11 @@
-# rintchron 0.1.1
+# rintchron 0.1.0
 
 Initial release, including:
 
 * High level functions:
   * `intchron()` queries databases indexed by IntChron.
-  * `intchron_hosts()` retrieves a list of available databases.
+  * `intchron_hosts()` retrieves a list of available databases (hosts).
+  * `intchron_countries()` retires a list of available countries (optionally by host).
 * Low level functions:
   * `intchron_request()` and `intchron_url()` help construct requests to IntChron.
   * `intchron_crawl()` recursively retrieves records.
