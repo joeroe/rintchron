@@ -7,12 +7,16 @@
 #' access to specific named elements of those objects.
 #'
 #' @param x    List of IntChron records from [intchron_request()].
-#' @param what Element to extract: 'data_url', 'records', or 'file_data'.
+#' @param what Element to extract: `"data_url"`, `"records"`, `"file_data"`, or
+#'  `"series_file_data"`
 #'
 #' @return
 #' `what` from `x`.
 #'
 #' @family functions for interacting with the IntChron API
+#'
+#' @references
+#' * IntChron Data Schema <http://intchron.org/schema>
 #'
 #' @export
 #'
@@ -20,13 +24,20 @@
 #' khiv <- intchron_request(intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV"))
 #' intchron_extract(khiv, "data_url")
 intchron_extract <- function(x, what) {
-  switch(what,
+  y <- switch(what,
     data_url = purrr::map(x, "data_url"),
     records = purrr::map(x, "records"),
     file_data = purrr::map(x, list("records", "file_data")),
+    series_file_data = purrr::map(x, list("project_series_list", "file_data")),
     series_list = purrr::map(x, list("records", "file_data", "series_list")),
-    stop("No method for extracting '", what, "' from an IntChron response.")
+    stop('No method for extracting "', what, '" from an IntChron response.')
   )
+
+  if (any(purrr::map_lgl(y, is.null))) {
+    stop('"', what, '" not found in IntChron response `x`')
+  }
+
+  return(y)
 }
 
 #' Extract a data frame from IntChron responses
@@ -35,21 +46,31 @@ intchron_extract <- function(x, what) {
 #' series and associated metadata as a data frame.
 #'
 #' @param x A list of IntChron responses.
+#' @param series Logical. Are records stored in a "project_series_list" instead
+#'  of an array of records? Default: `FALSE`.
 #'
 #' @return
 #' A `tibble` combining the data from all responses. Bibliographic references
-#' are returned as a list column containing a vector of citation keys (ref: or
+#' are returned as a list-column containing a vector of citation keys (ref: or
 #' doi:) for each record.
 #'
 #' @family functions for interacting with the IntChron API
+#'
+#' @references
+#' * IntChron Data Schema <http://intchron.org/schema>
 #'
 #' @export
 #'
 #' @examples
 #' khiv <- intchron_request(intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV"))
 #' intchron_tabulate(khiv)
-intchron_tabulate <- function(x) {
-  data <- intchron_extract(x, "file_data")
+intchron_tabulate <- function(x, series = FALSE) {
+  if (series) {
+    data <- intchron_extract(x, "series_file_data")
+  }
+  else {
+    data <- intchron_extract(x, "file_data")
+  }
   data <- purrr::map_dfr(data,
                          ~intchron_tabulate_series(.x$series_list, .x$header))
   return(data)
@@ -63,6 +84,7 @@ intchron_tabulate <- function(x) {
 #' @return
 #' A tibble.
 #'
+#' @keywords internal
 #' @noRd
 intchron_tabulate_series <- function(series_list, header) {
   # Pull out series data as a data frame
@@ -81,6 +103,17 @@ intchron_tabulate_series <- function(series_list, header) {
   refs <- paste0(refs)
   data <- cbind(data, refs = refs)
 
+  # Make NAs explicit
   data <- tibble::as_tibble(data)
+  data <- dplyr::mutate(
+    data,
+    dplyr::across(
+      dplyr::everything(),
+      ~ .x %>%
+        dplyr::na_if("") %>%
+        dplyr::na_if("-")
+    )
+  )
+
   return(data)
 }

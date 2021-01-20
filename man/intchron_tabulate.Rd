@@ -4,14 +4,17 @@
 \alias{intchron_tabulate}
 \title{Extract a data frame from IntChron responses}
 \usage{
-intchron_tabulate(x)
+intchron_tabulate(x, series = FALSE)
 }
 \arguments{
 \item{x}{A list of IntChron responses.}
+
+\item{series}{Logical. Are records stored in a "project_series_list" instead
+of an array of records? Default: \code{FALSE}.}
 }
 \value{
 A \code{tibble} combining the data from all responses. Bibliographic references
-are returned as a list column containing a vector of citation keys (ref: or
+are returned as a list-column containing a vector of citation keys (ref: or
 doi:) for each record.
 }
 \description{
@@ -21,6 +24,11 @@ series and associated metadata as a data frame.
 \examples{
 khiv <- intchron_request(intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV"))
 intchron_tabulate(khiv)
+}
+\references{
+\itemize{
+\item IntChron Data Schema \url{http://intchron.org/schema}
+}
 }
 \seealso{
 Other functions for interacting with the IntChron API: 

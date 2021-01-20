@@ -14,7 +14,7 @@ intchron(hosts, countries = NA, sites = NA, tabulate = TRUE)
 \item{sites}{(Optional) Vector of sites to be retrieved.}
 
 \item{tabulate}{If \code{TRUE} (the default), the data retrieved will be combined
-into a data frame. Set \code{FALSE} to get the raw data from IntChron.}
+into a data frame. Set \code{FALSE} to get the raw response from IntChron.}
 }
 \value{
 A \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
@@ -36,6 +36,7 @@ intchron(c("oxa", "nrcf"), countries = "Jordan")
 }
 \seealso{
 Other functions for querying IntChron: 
+\code{\link{intchron_get_labcode}()},
 \code{\link{intchron_hosts}()}
 }
 \concept{functions for querying IntChron}

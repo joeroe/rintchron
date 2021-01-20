@@ -9,7 +9,8 @@ intchron_extract(x, what)
 \arguments{
 \item{x}{List of IntChron records from \code{\link[=intchron_request]{intchron_request()}}.}
 
-\item{what}{Element to extract: 'data_url', 'records', or 'file_data'.}
+\item{what}{Element to extract: \code{"data_url"}, \code{"records"}, \code{"file_data"}, or
+\code{"series_file_data"}}
 }
 \value{
 \code{what} from \code{x}.
@@ -22,6 +23,11 @@ access to specific named elements of those objects.
 \examples{
 khiv <- intchron_request(intchron_url("record", c("oxa", "nrcf"), "Jordan", "Kharaneh IV"))
 intchron_extract(khiv, "data_url")
+}
+\references{
+\itemize{
+\item IntChron Data Schema \url{http://intchron.org/schema}
+}
 }
 \seealso{
 Other functions for interacting with the IntChron API: 

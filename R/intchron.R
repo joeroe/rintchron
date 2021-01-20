@@ -1,5 +1,8 @@
 # High-level interface to IntChron
 
+
+# Main interface ----------------------------------------------------------
+
 #' Query IntChron
 #'
 #' IntChron is an indexing service for chronological data from multiple sources.
@@ -10,7 +13,7 @@
 #' @param countries (Optional) Vector of countries to be retrieved.
 #' @param sites (Optional) Vector of sites to be retrieved.
 #' @param tabulate If `TRUE` (the default), the data retrieved will be combined
-#'  into a data frame. Set `FALSE` to get the raw data from IntChron.
+#'  into a data frame. Set `FALSE` to get the raw response from IntChron.
 #'
 #' @details
 #' At least `hosts` must be specified. Use `intchron_hosts()` to get a list of
@@ -67,6 +70,47 @@ intchron <- function(hosts,
   }
 }
 
+
+# Auxiliary interfaces ----------------------------------------------------
+
+#' Retrieve individual records from IntChron
+#'
+#' These functions retrieve individual records from IntChron by their primary
+#' keys. Currently the two types of primary key supported by IntChron are
+#' lab codes (for radiocarbon dates) and DOIs (for publications).
+#'
+#' @param lab_code For radiocarbon dates, a vector of lab codes to be retrieved.
+#' @param doi For publications, a vector of DOIs to be retrieved.
+#' @param tabulate If `TRUE` (the default), the data retrieved will be combined
+#'  into a data frame. Set `FALSE` to get the raw responses from IntChron.
+#'
+#' @return
+#' A `tibble`, or if `tabulate = FALSE`, a list, of IntChron responses.
+#'
+#' @family functions for querying IntChron
+#'
+#' @export
+#'
+#' @examples
+#' intchron_get_labcode("OxA-18955")
+intchron_get_labcode <- function(lab_code, tabulate = TRUE) {
+  url <- intchron_url("labcode", lab_code)
+  response <- intchron_request(url)
+
+  if (!tabulate) {
+    return(response)
+  }
+  else {
+    return(intchron_tabulate(response, series = TRUE))
+  }
+}
+
+#' @rdname intchron_get_labcode
+#' @export
+intchron_get_doi <- function(doi, tabulate = TRUE) {
+  warning("intchron_get_doi() not yet implemented!")
+  return(NA)
+}
 
 # Helper functions --------------------------------------------------------
 
