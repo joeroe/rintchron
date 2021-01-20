@@ -81,6 +81,18 @@ intchron_tabulate_series <- function(series_list, header) {
   refs <- paste0(refs)
   data <- cbind(data, refs = refs)
 
+  # Make NAs explicit
+  data <- tibble::as_tibble(data)
+  data <- dplyr::mutate(
+    data,
+    dplyr::across(
+      dplyr::everything(),
+      ~ .x %>%
+        dplyr::na_if("") %>%
+        dplyr::na_if("-")
+    )
+  )
+
   data <- tibble::as_tibble(data)
   return(data)
 }

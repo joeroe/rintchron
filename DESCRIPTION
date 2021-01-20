@@ -28,7 +28,8 @@ Imports:
     httr,
     tibble,
     dplyr,
-    readr
+    readr,
+    magrittr
 Suggests: 
     knitr,
     roxygen2,
