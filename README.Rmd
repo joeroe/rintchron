@@ -21,10 +21,10 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/joeroe/rintchron/workflows/R-CMD-check/badge.svg)](https://github.com/joeroe/rintchron/actions)
 <!-- badges: end -->
 
-**rintchron** provides an R interface to [IntChron](https://intchron.org), an indexing service and exchange format for chronological data such as radiocarbon dates ([Bronk Ramsey et al. 2019](https://doi.org/10.1017/RDC.2019.21)).
-It includes a user friendly interface for querying databases indexed by IntChron, as well as low level functions for interacting  directly with the IntChron API and other resources using [its schema](https://intchron.org/schema).
+**rintchron** provides an R interface to [IntChron](https://intchron.org), an indexing service and exchange format for radiocarbon dates and other chronological data ([Bronk Ramsey et al. 2019](https://doi.org/10.1017/RDC.2019.21)).
+It includes a user friendly interface for querying databases indexed by IntChron, as well as lower level functions for interacting directly with the [IntChron API](https://intchron.org/schema).
 
-For a quick start guide to querying IntChron's databases see the [basic usage vignette](https://rintchron.joeroe.io/articles/rintchron).
+For an introduction to querying IntChron's databases see the [basic usage vignette](https://rintchron.joeroe.io/articles/rintchron).
 For advanced users, low level functions for interacting with the IntChron API directly are described in the [IntChron API vignette](https://rintchron.joeroe.io/articles/intchron_api).
 
 ## Installation
