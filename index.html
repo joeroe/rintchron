@@ -100,51 +100,53 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><strong>rintchron</strong> provides an R interface to <a href="https://intchron.org">IntChron</a>, an indexing service and exchange format for chronological data such as radiocarbon dates (<a href="https://doi.org/10.1017/RDC.2019.21">Bronk Ramsey et al. 2019</a>). It includes a user friendly interface for querying databases indexed by IntChron, as well as low level functions for interacting directly with the IntChron API and other resources using <a href="https://intchron.org/schema">its schema</a>.</p>
-<p>For a quick start guide to querying IntChron’s databases see the <a href="https://rintchron.joeroe.io/articles/rintchron">basic usage vignette</a>. For advanced users, low level functions for interacting with the IntChron API directly are described in the <a href="https://rintchron.joeroe.io/articles/intchron_api">IntChron API vignette</a>.</p>
+<p><strong>rintchron</strong> provides an R interface to <a href="https://intchron.org">IntChron</a>, an indexing service and exchange format for radiocarbon dates and other chronological data (<a href="https://doi.org/10.1017/RDC.2019.21">Bronk Ramsey et al. 2019</a>). It includes a user friendly interface for querying databases indexed by IntChron, as well as lower level functions for interacting directly with the <a href="https://intchron.org/schema">IntChron API</a>.</p>
+<p>For an introduction to querying IntChron’s databases see the <a href="https://rintchron.joeroe.io/articles/rintchron">basic usage vignette</a>. For advanced users, low level functions for interacting with the IntChron API directly are described in the <a href="https://rintchron.joeroe.io/articles/intchron_api">IntChron API vignette</a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>rintchron has not yet been released on CRAN. You can install the development version from GitHub using the <a href="https://remotes.r-lib.org/">remotes</a> package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># install.package("remotes")</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"joeroe/rintchron"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.package("remotes")</span>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"joeroe/rintchron"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>Use <a href="https://rintchron.joeroe.io/reference/intchron"><code>intchron()</code></a> to query databases indexed by IntChron. You can refine the query by database (use <code><a href="reference/intchron_hosts.html">intchron_hosts()</a></code> to see what’s available) and optionally by country and site. For example, to download records from Jordan in the ORAU and NERC Radiocarbon Facility databases:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(<span class="st">"rintchron"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2"></a></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># List available databases</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">intchron_hosts</span>()</span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; # A tibble: 5 x 2</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt;   host     database                            </span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; 1 egyptdb  Egyptian Radiocarbon Database       </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; 2 intimate INTIMATE Database                   </span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt; 3 nrcf     NERC Radiocarbon Facility (Oxford)  </span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; 4 oxa      Oxford Radiocarbon Accelerator Unit </span></span>
-<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; 5 sadb     Southern Africa Radiocarbon Database</span></span>
-<span id="cb2-13"><a href="#cb2-13"></a></span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># Query IntChron</span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="kw">intchron</span>(<span class="kw">c</span>(<span class="st">"oxa"</span>, <span class="st">"nrcf"</span>), <span class="dt">countries =</span> <span class="st">"Jordan"</span>)</span>
-<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; # A tibble: 156 x 18</span></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt;    record_site record_country record_name record_longitude record_latitude</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span></span>
-<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt;  1 Araq ed-Du… Jordan         Araq ed-Du…             32.3            35.7</span></span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt;  2 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt;  3 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt;  4 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt;  5 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="co">#&gt;  6 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="co">#&gt;  7 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
-<span id="cb2-26"><a href="#cb2-26"></a><span class="co">#&gt;  8 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
-<span id="cb2-27"><a href="#cb2-27"></a><span class="co">#&gt;  9 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co">#&gt; 10 Burqu' 02   Jordan         Burqu' 02               37.8            32.7</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="co">#&gt; # … with 146 more rows, and 13 more variables: series_type &lt;chr&gt;,</span></span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="co">#&gt; #   labcode &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, sample &lt;chr&gt;,</span></span>
-<span id="cb2-31"><a href="#cb2-31"></a><span class="co">#&gt; #   material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;, r_date &lt;int&gt;,</span></span>
-<span id="cb2-32"><a href="#cb2-32"></a><span class="co">#&gt; #   r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rintchron.joeroe.io">"rintchron"</a></span><span class="op">)</span>
+
+<span class="co"># List available databases</span>
+<span class="fu"><a href="reference/intchron_hosts.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 5 x 2</span>
+<span class="co">#&gt;   host     database                            </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span>
+<span class="co">#&gt; 1 egyptdb  Egyptian Radiocarbon Database       </span>
+<span class="co">#&gt; 2 intimate INTIMATE Database                   </span>
+<span class="co">#&gt; 3 nrcf     NERC Radiocarbon Facility (Oxford)  </span>
+<span class="co">#&gt; 4 oxa      Oxford Radiocarbon Accelerator Unit </span>
+<span class="co">#&gt; 5 sadb     Southern Africa Radiocarbon Database</span>
+
+<span class="co"># Query IntChron</span>
+<span class="fu"><a href="reference/intchron.html">intchron</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"oxa"</span>, <span class="st">"nrcf"</span><span class="op">)</span>, countries <span class="op">=</span> <span class="st">"Jordan"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 156 x 19</span>
+<span class="co">#&gt;    record_site record_country record_name record_longitude record_latitude</span>
+<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Araq ed-Du… Jordan         Araq ed-Du…             32.3            35.7</span>
+<span class="co">#&gt;  2 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt;  3 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt;  4 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt;  5 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt;  6 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
+<span class="co">#&gt;  7 Azraq 31    Jordan         Azraq 31                36.8            31.8</span>
+<span class="co">#&gt;  8 Azraq 31    Jordan         Azraq 31                36.8            31.8</span>
+<span class="co">#&gt;  9 Azraq 31    Jordan         Azraq 31                36.8            31.8</span>
+<span class="co">#&gt; 10 Burqu' 02   Jordan         Burqu' 02               37.8            32.7</span>
+<span class="co">#&gt; # … with 146 more rows, and 14 more variables: series_type &lt;chr&gt;,</span>
+<span class="co">#&gt; #   labcode &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, sample &lt;chr&gt;,</span>
+<span class="co">#&gt; #   material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;, r_date &lt;int&gt;,</span>
+<span class="co">#&gt; #   r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;, refs &lt;chr&gt;</span></code></pre></div>
 </div>
 </div>
   </div>
