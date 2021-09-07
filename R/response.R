@@ -40,6 +40,32 @@ intchron_extract <- function(x, what) {
   return(y)
 }
 
+
+# Parse -------------------------------------------------------------------
+
+intchron_parse_response <- function(response) {
+
+}
+
+# S3 response object ------------------------------------------------------
+
+intchron_resource <- function(request, response, content) {
+  structure(
+    list(
+      request = request,
+      response = response,
+      content = content
+    ),
+    class = "intchron_resource"
+  )
+}
+
+print.intchron_resource <- function(x, ...) {
+  cat("<IntChron ", x$request, ">\n", sep = "")
+  str(x$content, max.level = 1)
+  invisible(x)
+}
+
 #' Extract a data frame from IntChron responses
 #'
 #' Takes a list of responses from an IntChron request and extracts the data
@@ -116,4 +142,46 @@ intchron_tabulate_series <- function(series_list, header) {
   )
 
   return(data)
+}
+
+
+# Validate ----------------------------------------------------------------
+
+#' Validate the content type of an IntChron response
+#'
+#' IntChron doesn't seem to ever return a 404 status, it just silently
+#' returns the home page. But we can detect these 'pseudo-404s' by checking if
+#' the content-type is html instead of the requested plain text/JSON.
+#'
+#' @param response A [httr::response] object
+#' @param strict If `TRUE` (the default), throws an error for bad responses.
+#' Otherwise, just a warning.
+#'
+#' @return
+#' `response` invisibly, with an error or warning if invalid.
+#'
+#' @noRd
+#' @keywords internal
+validate_response <- function(response, strict = TRUE) {
+  # Handle HTTP errors
+  if (strict) {
+    httr::stop_for_status(response, paste0("get record from <", url, ">"))
+  }
+  else {
+    httr::warn_for_status(response, paste0("get record from <", url, ">"))
+  }
+
+  # Handle unexpected content types
+  if (httr::http_type(response) != "text/plain") {
+    if (isTRUE(strict)) f <- rlang::abort
+    else f <- rlang::warn
+    do.call(f, list(
+      message = paste0("Request to <", url, "> ",
+                       "did not return an IntChron record.", "\n",
+                       "Is the URL correct?"),
+      class = "intchron_bad_response"
+    ))
+  }
+
+  invisible(response)
 }
