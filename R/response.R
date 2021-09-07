@@ -149,37 +149,29 @@ intchron_tabulate_series <- function(series_list, header) {
 
 #' Validate the content type of an IntChron response
 #'
-#' IntChron doesn't seem to ever return a 404 status, it just silently
-#' returns the home page. But we can detect these 'pseudo-404s' by checking if
-#' the content-type is html instead of the requested plain text/JSON.
+#' Causes an error if the content type is not "text/plain" or if it has no
+#' content.
 #'
-#' @param response A [httr::response] object
-#' @param strict If `TRUE` (the default), throws an error for bad responses.
-#' Otherwise, just a warning.
+#' @param response A [httr::response] object.
 #'
 #' @return
-#' `response` invisibly, with an error or warning if invalid.
+#' `response` invisibly, or an error if invalid.
 #'
 #' @noRd
 #' @keywords internal
-validate_response <- function(response, strict = TRUE) {
-  # Handle HTTP errors
-  if (strict) {
-    httr::stop_for_status(response, paste0("get record from <", url, ">"))
-  }
-  else {
-    httr::warn_for_status(response, paste0("get record from <", url, ">"))
+stop_for_content <- function(response) {
+  if (isFALSE(httr::has_content(response))) {
+    rlang::abort(c(
+      paste0("invalid response from <", response$url, ">."),
+      x = "Content is empty."
+    ))
   }
 
-  # Handle unexpected content types
   if (httr::http_type(response) != "text/plain") {
-    if (isTRUE(strict)) f <- rlang::abort
-    else f <- rlang::warn
-    do.call(f, list(
-      message = paste0("Request to <", url, "> ",
-                       "did not return an IntChron record.", "\n",
-                       "Is the URL correct?"),
-      class = "intchron_bad_response"
+    rlang::abort(c(
+      paste0("invalid response from <", response$url, ">."),
+      x = paste0("Content type is ", httr::http_type(response),
+                 " (expected text/plain).")
     ))
   }
 

@@ -36,14 +36,10 @@ intchron_request <- function(url, strict = FALSE) {
       res <- httr::RETRY("GET", url,
                          httr::user_agent("https://github.com/joeroe/rintchron"))
 
-      validate_response(res, strict)
+      httr::stop_for_status(res, paste0("get record from <", url, ">"))
+      stop_for_content(res)
 
-      if (httr::http_type(res) == "text/plain") {
-        jsonlite::parse_json(httr::content(res, "text"), simplifyVector = TRUE)
-      }
-      else {
-        NA
-      }
+      jsonlite::parse_json(httr::content(res, "text"), simplifyVector = TRUE)
     }
   )
 
