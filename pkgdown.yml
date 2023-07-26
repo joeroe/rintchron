@@ -1,10 +1,10 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   intchron_api: intchron_api.html
   rintchron: rintchron.html
-last_built: 2021-01-20T16:32Z
+last_built: 2023-07-26T06:31Z
 urls:
   reference: https://rintchron.joeroe.io/reference
   article: https://rintchron.joeroe.io/articles

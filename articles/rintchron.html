@@ -26,9 +26,11 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><script async src="https://umami.joeroe.io/script.js" data-website-id="1507dc1d-2003-4ab3-98f6-4ed37ea2863f"></script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -41,18 +43,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">rintchron</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/rintchron.html">Get started</a>
 </li>
@@ -60,7 +56,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/joeroe/rintchron/">
+  <a href="https://github.com/joeroe/rintchron/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,174 +88,225 @@
 
       
 
-      </header><script src="rintchron_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Basic usage</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/joeroe/rintchron/blob/master/vignettes/rintchron.Rmd"><code>vignettes/rintchron.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/joeroe/rintchron/blob/HEAD/vignettes/rintchron.Rmd" class="external-link"><code>vignettes/rintchron.Rmd</code></a></small>
       <div class="hidden name"><code>rintchron.Rmd</code></div>
 
     </div>
 
     
     
-<p><a href="https://intchron.org">IntChron</a> is an indexing service for chronological data such as radiocarbon dates <span class="citation">(Bronk Ramsey et al. 2019)</span>. It specifies a standard exchange format and provides a consistent API for querying databases that use its schema. The rintchron package provides a simple interface for querying these databases with <code><a href="../reference/intchron.html">intchron()</a></code>, explained in this vignette.</p>
-<p>The package also includes low level functions for interacting with the IntChron API directly, described in <code>vignette("intchron-api")</code>.</p>
+<p><a href="https://intchron.org" class="external-link">IntChron</a> is an indexing service
+for chronological data such as radiocarbon dates <span class="citation">(Bronk Ramsey et al. 2019)</span>. It specifies a
+standard exchange format and provides a consistent API for querying
+databases that use its schema. The rintchron package provides a simple
+interface for querying these databases with <code><a href="../reference/intchron.html">intchron()</a></code>,
+explained in this vignette.</p>
+<p>The package also includes low level functions for interacting with
+the IntChron API directly, described in
+<code>vignette("intchron-api")</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://rintchron.joeroe.io">"rintchron"</a></span><span class="op">)</span></code></pre></div>
-<div id="querying-intchron" class="section level2">
-<h2 class="hasAnchor">
-<a href="#querying-intchron" class="anchor"></a>Querying IntChron</h2>
-<p>Use <code><a href="../reference/intchron.html">intchron()</a></code> to query databases indexed by IntChron. At a minimum, you will need to specify which databases or ‘hosts’ you want to query.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Use <code><a href="../reference/intchron_hosts.html">intchron_hosts()</a></code> to see a list of currently available databases:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://rintchron.joeroe.io">"rintchron"</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="querying-intchron">Querying IntChron<a class="anchor" aria-label="anchor" href="#querying-intchron"></a>
+</h2>
+<p>Use <code><a href="../reference/intchron.html">intchron()</a></code> to query databases indexed by IntChron.
+At a minimum, you will need to specify which databases or ‘hosts’ you
+want to query.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Use <code><a href="../reference/intchron_hosts.html">intchron_hosts()</a></code> to see a
+list of currently available databases:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/intchron_hosts.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 5 x 2</span>
-<span class="co">#&gt;   host     database                            </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span>
-<span class="co">#&gt; 1 egyptdb  Egyptian Radiocarbon Database       </span>
-<span class="co">#&gt; 2 intimate INTIMATE Database                   </span>
-<span class="co">#&gt; 3 nrcf     NERC Radiocarbon Facility (Oxford)  </span>
-<span class="co">#&gt; 4 oxa      Oxford Radiocarbon Accelerator Unit </span>
-<span class="co">#&gt; 5 sadb     Southern Africa Radiocarbon Database</span></code></pre></div>
-<p>The first argument to <code><a href="../reference/intchron.html">intchron()</a></code> should be a the ‘host’ code of the database you want to query, or a vector of hosts to query more than one (e.g. <code><a href="../reference/intchron.html">intchron(hosts = c("oxa", "nrcf"))</a></code>). For example, to return the entire South Africa Radiocarbon Database (‘sadb’):</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/intchron_hosts.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 2</span></span></span>
+<span><span class="co">#&gt;   host     database                            </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> egyptdb  Egyptian Radiocarbon Database       </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> intimate INTIMATE Database                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> nrcf     NERC Radiocarbon Facility (Oxford)  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> oxa      Oxford Radiocarbon Accelerator Unit </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> sadb     Southern Africa Radiocarbon Database</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> intcal20 IntCal20 archive</span></span></code></pre></div>
+<p>The first argument to <code><a href="../reference/intchron.html">intchron()</a></code> should be a the ‘host’
+code of the database you want to query, or a vector of hosts to query
+more than one (e.g. <code>intchron(hosts = c("oxa", "nrcf"))</code>).
+For example, to return the entire South Africa Radiocarbon Database
+(‘sadb’):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/intchron.html">intchron</a></span><span class="op">(</span><span class="st">"sadb"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2,575 x 24</span>
-<span class="co">#&gt;    record_site record_country record_name record_longitude record_latitude</span>
-<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Basinghall  Botswana       Basinghall              27.1           -23.5</span>
-<span class="co">#&gt;  2 Basinghall  Botswana       Basinghall              27.1           -23.5</span>
-<span class="co">#&gt;  3 Basinghall  Botswana       Basinghall              27.1           -23.5</span>
-<span class="co">#&gt;  4 Basinghall  Botswana       Basinghall              27.1           -23.5</span>
-<span class="co">#&gt;  5 Basinghall  Botswana       Basinghall              27.1           -23.5</span>
-<span class="co">#&gt;  6 Basinghall  Botswana       Basinghall              27.1           -23.5</span>
-<span class="co">#&gt;  7 Bisoli      Botswana       Bisoli                  27.6           -21.0</span>
-<span class="co">#&gt;  8 Bisoli      Botswana       Bisoli                  27.6           -21.0</span>
-<span class="co">#&gt;  9 Bobonong R… Botswana       Bobonong R…             28.8           -22.2</span>
-<span class="co">#&gt; 10 Bosutswe    Botswana       Bosutswe                26.6           -22.0</span>
-<span class="co">#&gt; # … with 2,565 more rows, and 19 more variables: series_type &lt;chr&gt;,</span>
-<span class="co">#&gt; #   labcode &lt;chr&gt;, country &lt;chr&gt;, region &lt;chr&gt;, longitude &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   latitude &lt;dbl&gt;, site &lt;chr&gt;, sample &lt;chr&gt;, material &lt;chr&gt;, species &lt;chr&gt;,</span>
-<span class="co">#&gt; #   d13C &lt;dbl&gt;, r_date &lt;int&gt;, r_date_sigma &lt;int&gt;, qual &lt;chr&gt;,</span>
-<span class="co">#&gt; #   environment &lt;chr&gt;, context &lt;chr&gt;, period &lt;chr&gt;, subperiod &lt;chr&gt;, refs &lt;chr&gt;</span></code></pre></div>
-<p>You can further refine your query by specifying the locations you are interested in with the <code>countries</code> and <code>sites</code> parameters. Like <code>hosts</code>, these can also accept a vector of locations. For example, to download records from Jordan in the ORAU (<code>oxa</code>) and NERC-RF (<code>nrcf</code>) databases:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/intchron.html">intchron</a></span><span class="op">(</span><span class="st">"sadb"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,565 × 36</span></span></span>
+<span><span class="co">#&gt;    record_environment record_site_context record_z_type record_z_basis</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> <span style="color: #BB0000;">NA</span>                 settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> <span style="color: #BB0000;">NA</span>                 settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Savanna Biome      settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Desert Biome       settlement          <span style="color: #BB0000;">NA</span>            <span style="color: #BB0000;">NA</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2,555 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 32 more variables: record_z_units &lt;lgl&gt;, record_t_source &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   record_suppress_t &lt;lgl&gt;, record_suppress_z &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   record_record_comment &lt;chr&gt;, record_site &lt;chr&gt;, record_country &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   record_region &lt;chr&gt;, record_latitude &lt;dbl&gt;, record_longitude &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   record_elevation &lt;lgl&gt;, record_name &lt;chr&gt;, record_site_type &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   record_color &lt;chr&gt;, series_type &lt;chr&gt;, t &lt;dbl&gt;, t_sigma &lt;dbl&gt;, …</span></span></span></code></pre></div>
+<p>You can further refine your query by specifying the locations you are
+interested in with the <code>countries</code> and <code>sites</code>
+parameters. Like <code>hosts</code>, these can also accept a vector of
+locations. For example, to download records from Jordan in the ORAU
+(<code>oxa</code>) and NERC-RF (<code>nrcf</code>) databases:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jordan</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/intchron.html">intchron</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"oxa"</span>, <span class="st">"nrcf"</span><span class="op">)</span>, countries <span class="op">=</span> <span class="st">"Jordan"</span><span class="op">)</span>
-<span class="va">jordan</span>
-<span class="co">#&gt; # A tibble: 156 x 19</span>
-<span class="co">#&gt;    record_site record_country record_name record_longitude record_latitude</span>
-<span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Araq ed-Du… Jordan         Araq ed-Du…             32.3            35.7</span>
-<span class="co">#&gt;  2 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
-<span class="co">#&gt;  3 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
-<span class="co">#&gt;  4 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
-<span class="co">#&gt;  5 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
-<span class="co">#&gt;  6 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span>
-<span class="co">#&gt;  7 Azraq 31    Jordan         Azraq 31                36.8            31.8</span>
-<span class="co">#&gt;  8 Azraq 31    Jordan         Azraq 31                36.8            31.8</span>
-<span class="co">#&gt;  9 Azraq 31    Jordan         Azraq 31                36.8            31.8</span>
-<span class="co">#&gt; 10 Burqu' 02   Jordan         Burqu' 02               37.8            32.7</span>
-<span class="co">#&gt; # … with 146 more rows, and 14 more variables: series_type &lt;chr&gt;,</span>
-<span class="co">#&gt; #   labcode &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, sample &lt;chr&gt;,</span>
-<span class="co">#&gt; #   material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;, r_date &lt;int&gt;,</span>
-<span class="co">#&gt; #   r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;, refs &lt;chr&gt;</span></code></pre></div>
-<p>Use <code><a href="../reference/intchron_hosts.html">intchron_countries()</a></code> to get a list of available countries on IntChron:</p>
+<code class="sourceCode R"><span><span class="va">jordan</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/intchron.html">intchron</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"oxa"</span>, <span class="st">"nrcf"</span><span class="op">)</span>, countries <span class="op">=</span> <span class="st">"Jordan"</span><span class="op">)</span></span>
+<span><span class="va">jordan</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 156 × 19</span></span></span>
+<span><span class="co">#&gt;    record_site  record_country record_name  record_longitude record_latitude</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Araq ed-Dubb Jordan         Araq ed-Dubb             32.3            35.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Azraq 31     Jordan         Azraq 31                 36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Azraq 31     Jordan         Azraq 31                 36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Azraq 31     Jordan         Azraq 31                 36.8            31.8</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Burqu' 02    Jordan         Burqu' 02                37.8            32.7</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 146 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 14 more variables: series_type &lt;chr&gt;, labcode &lt;chr&gt;, longitude &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   latitude &lt;dbl&gt;, sample &lt;chr&gt;, material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   r_date &lt;int&gt;, r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   refs &lt;chr&gt;</span></span></span></code></pre></div>
+<p>Use <code><a href="../reference/intchron_hosts.html">intchron_countries()</a></code> to get a list of available
+countries on IntChron:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 109 x 1</span>
-<span class="co">#&gt;    country   </span>
-<span class="co">#&gt;    &lt;chr&gt;     </span>
-<span class="co">#&gt;  1 Albania   </span>
-<span class="co">#&gt;  2 Algeria   </span>
-<span class="co">#&gt;  3 Andorra   </span>
-<span class="co">#&gt;  4 Angola    </span>
-<span class="co">#&gt;  5 Antarctica</span>
-<span class="co">#&gt;  6 Argentina </span>
-<span class="co">#&gt;  7 Armenia   </span>
-<span class="co">#&gt;  8 Australia </span>
-<span class="co">#&gt;  9 Austria   </span>
-<span class="co">#&gt; 10 Bahrain   </span>
-<span class="co">#&gt; # … with 99 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 117 × 1</span></span></span>
+<span><span class="co">#&gt;    country   </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Albania   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Algeria   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Andorra   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Angola    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Antarctica</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Argentina </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Armenia   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Australia </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Austria   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Bahamas   </span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 107 more rows</span></span></span></code></pre></div>
 <p>Or in specific databases:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"intimate"</span>, <span class="st">"egyptdb"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 13 x 2</span>
-<span class="co">#&gt;    host     country                </span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                  </span>
-<span class="co">#&gt;  1 intimate ""                     </span>
-<span class="co">#&gt;  2 intimate "France"               </span>
-<span class="co">#&gt;  3 intimate "Greenland"            </span>
-<span class="co">#&gt;  4 intimate "Ireland"              </span>
-<span class="co">#&gt;  5 intimate "Italy"                </span>
-<span class="co">#&gt;  6 intimate "Norway"               </span>
-<span class="co">#&gt;  7 intimate "Romania"              </span>
-<span class="co">#&gt;  8 intimate "Slovenia"             </span>
-<span class="co">#&gt;  9 intimate "Switzerland"          </span>
-<span class="co">#&gt; 10 intimate "UK"                   </span>
-<span class="co">#&gt; 11 egyptdb  "Egypt"                </span>
-<span class="co">#&gt; 12 egyptdb  "Palestinian Territory"</span>
-<span class="co">#&gt; 13 egyptdb  "Sudan"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/intchron_hosts.html">intchron_countries</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"intimate"</span>, <span class="st">"egyptdb"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 13 × 2</span></span></span>
+<span><span class="co">#&gt;    host     country                </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> intimate <span style="color: #949494;">""</span>                     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> intimate <span style="color: #949494;">"</span>France<span style="color: #949494;">"</span>               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> intimate <span style="color: #949494;">"</span>Greenland<span style="color: #949494;">"</span>            </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> intimate <span style="color: #949494;">"</span>Ireland<span style="color: #949494;">"</span>              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> intimate <span style="color: #949494;">"</span>Italy<span style="color: #949494;">"</span>                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> intimate <span style="color: #949494;">"</span>Norway<span style="color: #949494;">"</span>               </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> intimate <span style="color: #949494;">"</span>Romania<span style="color: #949494;">"</span>              </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> intimate <span style="color: #949494;">"</span>Slovenia<span style="color: #949494;">"</span>             </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> intimate <span style="color: #949494;">"</span>Switzerland<span style="color: #949494;">"</span>          </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> intimate <span style="color: #949494;">"</span>UK<span style="color: #949494;">"</span>                   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> egyptdb  <span style="color: #949494;">"</span>Egypt<span style="color: #949494;">"</span>                </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> egyptdb  <span style="color: #949494;">"</span>Palestinian Territory<span style="color: #949494;">"</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> egyptdb  <span style="color: #949494;">"</span>Sudan<span style="color: #949494;">"</span></span></span></code></pre></div>
 </div>
-<div id="working-with-intchron-records" class="section level2">
-<h2 class="hasAnchor">
-<a href="#working-with-intchron-records" class="anchor"></a>Working with IntChron records</h2>
-<p>With the default setting <code>tabulate = TRUE</code>, <code><a href="../reference/intchron.html">intchron()</a></code> returns a table of records, ready for you to use in your analysis:</p>
+<div class="section level2">
+<h2 id="working-with-intchron-records">Working with IntChron records<a class="anchor" aria-label="anchor" href="#working-with-intchron-records"></a>
+</h2>
+<p>With the default setting <code>tabulate = TRUE</code>,
+<code><a href="../reference/intchron.html">intchron()</a></code> returns a table of records, ready for you to use
+in your analysis:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="co"># Summarise radiocarbon dates available from sites in Jordan</span>
-<span class="va">jordan</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">labcode</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">record_site</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n_dates <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop_last"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 20 x 2</span>
-<span class="co">#&gt;    record_site            n_dates</span>
-<span class="co">#&gt;  * &lt;chr&gt;                    &lt;int&gt;</span>
-<span class="co">#&gt;  1 Araq ed-Dubb                 1</span>
-<span class="co">#&gt;  2 Ayn Qasiyah                  5</span>
-<span class="co">#&gt;  3 Azraq 31                     3</span>
-<span class="co">#&gt;  4 Burqu' 02                    1</span>
-<span class="co">#&gt;  5 Burqu' 03                    1</span>
-<span class="co">#&gt;  6 Burqu' 27                    3</span>
-<span class="co">#&gt;  7 Burqu' 35                    3</span>
-<span class="co">#&gt;  8 Dahikiya, Badia Region       2</span>
-<span class="co">#&gt;  9 Dhuweila                     4</span>
-<span class="co">#&gt; 10 Kharaneh IV                  7</span>
-<span class="co">#&gt; 11 Shuna Project               22</span>
-<span class="co">#&gt; 12 Tell Abu Al-Kharaz          18</span>
-<span class="co">#&gt; 13 Tell Abu en-Niaj             3</span>
-<span class="co">#&gt; 14 Tell el-Hayyat               4</span>
-<span class="co">#&gt; 15 Tell el-Hibr                 1</span>
-<span class="co">#&gt; 16 Tell Hesban                  1</span>
-<span class="co">#&gt; 17 Wadi Jilat                  11</span>
-<span class="co">#&gt; 18 Wadi Jilat 13                1</span>
-<span class="co">#&gt; 19 Wadi Jilat 22                2</span>
-<span class="co">#&gt; 20 Wadi Jilat 25                1</span></code></pre></div>
-<p>Note the use of <code><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct(labcode)</a></code> above. The data from IntChron usually requires some cleaning; for example, the ORAU and NERC-RF databases contain many duplicate radiocarbon dates. The <a href="https://docs.ropensci.org/c14bazAAR/">c14bazAAR</a> package <span class="citation">(Schmid, Seidensticker, and Hinz 2019)</span> includes many useful functions for tidying radiocarbon data.</p>
-<p>You may find the <a href="http://stratigraphr.joeroe.io/">stratigraphr</a> and <a href="https://github.com/ahb108/rcarbon/">rcarbon</a> <span class="citation">(Crema and Bevan 2020)</span> packages useful for further analysis of radiocarbon dates in R.</p>
-<p>In some situations you might want to access the full records returned by IntChron. Setting <code>tabulate = FALSE</code> will return the raw JSON responses as a named list. See <code>vignette("intchron-api")</code> for some tips on how to work with these objects.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summarise radiocarbon dates available from sites in Jordan</span></span>
+<span><span class="va">jordan</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">labcode</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">record_site</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>n_dates <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>, .groups <span class="op">=</span> <span class="st">"drop_last"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 20 × 2</span></span></span>
+<span><span class="co">#&gt;    record_site            n_dates</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Araq ed-Dubb                 1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Ayn Qasiyah                  5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Azraq 31                     3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Burqu' 02                    1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Burqu' 03                    1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Burqu' 27                    3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Burqu' 35                    3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Dahikiya, Badia Region       2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Dhuweila                     4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Kharaneh IV                  7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Shuna Project               22</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Tell Abu Al-Kharaz          18</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Tell Abu en-Niaj             3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Tell Hesban                  1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Tell el-Hayyat               4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Tell el-Hibr                 1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Wadi Jilat                  11</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">18</span> Wadi Jilat 13                1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">19</span> Wadi Jilat 22                2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">20</span> Wadi Jilat 25                1</span></span></code></pre></div>
+<p>Note the use of <code>distinct(labcode)</code> above. The data from
+IntChron usually requires some cleaning; for example, the ORAU and
+NERC-RF databases contain many duplicate radiocarbon dates. The <a href="https://docs.ropensci.org/c14bazAAR/" class="external-link">c14bazAAR</a> package <span class="citation">(Schmid, Seidensticker, and Hinz 2019)</span> includes
+many useful functions for tidying radiocarbon data.</p>
+<p>You may find the <a href="http://stratigraphr.joeroe.io/" class="external-link">stratigraphr</a> and <a href="https://github.com/ahb108/rcarbon/" class="external-link">rcarbon</a> <span class="citation">(Crema and Bevan 2020)</span> packages useful for
+further analysis of radiocarbon dates in R.</p>
+<p>In some situations you might want to access the full records returned
+by IntChron. Setting <code>tabulate = FALSE</code> will return the raw
+JSON responses as a named list. See
+<code>vignette("intchron-api")</code> for some tips on how to work with
+these objects.</p>
 </div>
-<div id="references" class="section level2 unnumbered">
-<h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
-<div id="refs" class="references">
-<div id="ref-Bronk_Ramsey2019">
-<p>Bronk Ramsey, Christopher, Maarten Blaauw, Rebecca Kearney, and Staff, Richard A Staff. 2019. “The Importance of Open Access to Chronological Information: The IntChron Initiative.” <em>Radiocarbon</em> 61 (5): 1–11. <a href="https://doi.org/10.1017/RDC.2019.21">https://doi.org/10.1017/RDC.2019.21</a>.</p>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Bronk_Ramsey2019" class="csl-entry">
+Bronk Ramsey, Christopher, Maarten Blaauw, Rebecca Kearney, and Staff,
+Richard A Staff. 2019. <span>“The Importance of Open Access to
+Chronological Information: The <span>IntChron</span> Initiative.”</span>
+<em>Radiocarbon</em> 61 (5): 1–11. <a href="https://doi.org/10.1017/RDC.2019.21" class="external-link">https://doi.org/10.1017/RDC.2019.21</a>.
 </div>
-<div id="ref-Crema2020">
-<p>Crema, Enrico R, and Andrew Bevan. 2020. “Inference from Large Sets of Radiocarbon Dates: Software and Methods.” <em>Radiocarbon</em>, 1–17. <a href="https://doi.org/10.1017/RDC.2020.95">https://doi.org/10.1017/RDC.2020.95</a>.</p>
+<div id="ref-Crema2020" class="csl-entry">
+Crema, Enrico R, and Andrew Bevan. 2020. <span>“Inference from Large
+Sets of Radiocarbon Dates: Software and Methods.”</span>
+<em>Radiocarbon</em>, 1–17. <a href="https://doi.org/10.1017/RDC.2020.95" class="external-link">https://doi.org/10.1017/RDC.2020.95</a>.
 </div>
-<div id="ref-Schmid2019">
-<p>Schmid, Clemens, Dirk Seidensticker, and Martin Hinz. 2019. “c14bazAAR: An R Package for Downloading and Preparing C14 Dates from Different Source Databases.” <em>Journal of Open Source Software</em> 4 (43): 1914. <a href="https://doi.org/10.21105/joss.01914">https://doi.org/10.21105/joss.01914</a>.</p>
+<div id="ref-Schmid2019" class="csl-entry">
+Schmid, Clemens, Dirk Seidensticker, and Martin Hinz. 2019. <span>“<span class="nocase">c14bazAAR</span>: An <span>R</span> Package for
+Downloading and Preparing <span>C14</span> Dates from Different Source
+Databases.”</span> <em>Journal of Open Source Software</em> 4 (43):
+1914. <a href="https://doi.org/10.21105/joss.01914" class="external-link">https://doi.org/10.21105/joss.01914</a>.
 </div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p>There are several reasons for this. First and foremost, it reduces the number of requests a given query has to make to the IntChron API. Querying all hosts isn’t usually necessary because IntChron indexes different types of database (e.g. radiocarbon dates from ORAU, palaeoclimate records from INTIMATE) which are rarely combined in a single analysis. Also, since IntChron is an indexing service, it is designed to include more databases over time, meaning analysis code that is not explicit about which hosts it needs is likely to break or at least become much less efficient in the future. But if you do need to, you can query all hosts by setting <code>host = "all"</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>There are several reasons for this. First and foremost,
+it reduces the number of requests a given query has to make to the
+IntChron API. Querying all hosts isn’t usually necessary because
+IntChron indexes different types of database (e.g. radiocarbon dates
+from ORAU, palaeoclimate records from INTIMATE) which are rarely
+combined in a single analysis. Also, since IntChron is an indexing
+service, it is designed to include more databases over time, meaning
+analysis code that is not explicit about which hosts it needs is likely
+to break or at least become much less efficient in the future. But if
+you do need to, you can query all hosts by setting
+<code>host = "all"</code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -275,11 +322,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://joeroe.io">Joe Roe</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://joeroe.io" class="external-link">Joe Roe</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -287,6 +336,8 @@
 
   
 
+
+  
 
   </body>
 </html>
