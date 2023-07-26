@@ -91,7 +91,7 @@
       </header><div class="row">
   <div class="contents col-md-9">
 <div class="section level1">
-<div class="page-header"><h1 id="rintchron-r-interface-to-intchron-">rintchron: R interface to IntChron <a href="https://rintchron.joeroe.io"><img src="reference/figures/logo.svg" align="right" height="139"></a>
+<div class="page-header"><h1 id="rintchron-r-interface-to-intchron-">rintchron: R interface to IntChron <a href="https://rintchron.joeroe.io"><img src="reference/figures/logo.svg" align="right" style="float: right; height: 139px"></a>
 <a class="anchor" aria-label="anchor" href="#rintchron-r-interface-to-intchron-"></a>
 </h1></div>
 <!-- badges: start -->
@@ -115,7 +115,7 @@
 <span></span>
 <span><span class="co"># List available databases</span></span>
 <span><span class="fu"><a href="reference/intchron_hosts.html">intchron_hosts</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 5 x 2</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
 <span><span class="co">#&gt;   host     database                            </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;                               </span></span>
 <span><span class="co">#&gt; 1 egyptdb  Egyptian Radiocarbon Database       </span></span>
@@ -123,26 +123,28 @@
 <span><span class="co">#&gt; 3 nrcf     NERC Radiocarbon Facility (Oxford)  </span></span>
 <span><span class="co">#&gt; 4 oxa      Oxford Radiocarbon Accelerator Unit </span></span>
 <span><span class="co">#&gt; 5 sadb     Southern Africa Radiocarbon Database</span></span>
+<span><span class="co">#&gt; 6 intcal20 IntCal20 archive</span></span>
 <span></span>
 <span><span class="co"># Query IntChron</span></span>
 <span><span class="fu"><a href="reference/intchron.html">intchron</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"oxa"</span>, <span class="st">"nrcf"</span><span class="op">)</span>, countries <span class="op">=</span> <span class="st">"Jordan"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 156 x 19</span></span>
-<span><span class="co">#&gt;    record_site record_country record_name record_longitude record_latitude</span></span>
-<span><span class="co">#&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;                  &lt;dbl&gt;           &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt;  1 Araq ed-Du… Jordan         Araq ed-Du…             32.3            35.7</span></span>
-<span><span class="co">#&gt;  2 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span><span class="co">#&gt;  3 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span><span class="co">#&gt;  4 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span><span class="co">#&gt;  5 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span><span class="co">#&gt;  6 Ayn Qasiyah Jordan         Ayn Qasiyah             36.8            31.8</span></span>
-<span><span class="co">#&gt;  7 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
-<span><span class="co">#&gt;  8 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
-<span><span class="co">#&gt;  9 Azraq 31    Jordan         Azraq 31                36.8            31.8</span></span>
-<span><span class="co">#&gt; 10 Burqu' 02   Jordan         Burqu' 02               37.8            32.7</span></span>
-<span><span class="co">#&gt; # … with 146 more rows, and 14 more variables: series_type &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   labcode &lt;chr&gt;, longitude &lt;dbl&gt;, latitude &lt;dbl&gt;, sample &lt;chr&gt;,</span></span>
-<span><span class="co">#&gt; #   material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;, r_date &lt;int&gt;,</span></span>
-<span><span class="co">#&gt; #   r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;, refs &lt;chr&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt; # A tibble: 156 × 19</span></span>
+<span><span class="co">#&gt;    record_site  record_country record_name  record_longitude record_latitude</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;        &lt;chr&gt;          &lt;chr&gt;                   &lt;dbl&gt;           &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt;  1 Araq ed-Dubb Jordan         Araq ed-Dubb             32.3            35.7</span></span>
+<span><span class="co">#&gt;  2 Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt;  3 Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt;  4 Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt;  5 Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt;  6 Ayn Qasiyah  Jordan         Ayn Qasiyah              36.8            31.8</span></span>
+<span><span class="co">#&gt;  7 Azraq 31     Jordan         Azraq 31                 36.8            31.8</span></span>
+<span><span class="co">#&gt;  8 Azraq 31     Jordan         Azraq 31                 36.8            31.8</span></span>
+<span><span class="co">#&gt;  9 Azraq 31     Jordan         Azraq 31                 36.8            31.8</span></span>
+<span><span class="co">#&gt; 10 Burqu' 02    Jordan         Burqu' 02                37.8            32.7</span></span>
+<span><span class="co">#&gt; # ℹ 146 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 14 more variables: series_type &lt;chr&gt;, labcode &lt;chr&gt;, longitude &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   latitude &lt;dbl&gt;, sample &lt;chr&gt;, material &lt;chr&gt;, species &lt;chr&gt;, d13C &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   r_date &lt;int&gt;, r_date_sigma &lt;int&gt;, qual &lt;chr&gt;, F14C &lt;dbl&gt;, F14C_sigma &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   refs &lt;chr&gt;</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -185,7 +187,7 @@
 <ul class="list-unstyled">
 <li><a href="https://www.repostatus.org/#wip" class="external-link"><img src="https://www.repostatus.org/badges/latest/wip.svg" alt="Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public."></a></li>
 <li><a href="https://CRAN.R-project.org/package=rintchron" class="external-link"><img src="https://www.r-pkg.org/badges/version/rintchron" alt="CRAN status"></a></li>
-<li><a href="https://github.com/joeroe/rintchron/actions" class="external-link"><img src="https://github.com/joeroe/rintchron/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/joeroe/rintchron/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/joeroe/rintchron/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
