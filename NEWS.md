@@ -4,6 +4,7 @@ Initial release, including:
 
 * High level functions:
   * `intchron()` queries databases indexed by IntChron.
+  * `intchron_get_labcode()` and `intchron_get_doi()` fetch individual records by lab code and DOI respectively.
   * `intchron_hosts()` retrieves a list of available databases (hosts).
   * `intchron_countries()` retires a list of available countries (optionally by host).
 * Low level functions:
