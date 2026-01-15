@@ -134,16 +134,12 @@ intchron_tabulate_series <- function(series_list, header) {
   data <- dplyr::mutate(
     data,
     dplyr::across(
-      dplyr::everything(),
+      dplyr::where(is.character),
       ~ .x %>%
         dplyr::na_if("") %>%
         dplyr::na_if("-")
     )
   )
-
-  return(data)
-}
-
 
 # Validate ----------------------------------------------------------------
 
