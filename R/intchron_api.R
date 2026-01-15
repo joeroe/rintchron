@@ -36,38 +36,10 @@ intchron_request <- function(url, strict = FALSE) {
       res <- httr::RETRY("GET", url,
                          httr::user_agent("https://github.com/joeroe/rintchron"))
 
-      if (!httr::http_error(res)) {
-        # Detect pseudo-404s
-        #   IntChron doesn't seem to ever return a 404 status, it just silently
-        #   returns the home page. But we can detect this by checking if the
-        #   content-type is html instead of the requested plain text/JSON.
-        if (httr::http_type(res) != "text/plain") {
-          if (strict) {
-            stop("Request to <", url, "> did not return an IntChron record.\nIs the URL correct?",
-                 call. = FALSE)
-          }
-          else {
-            warning("Request to <", url, "> did not return an IntChron record.\nIs the URL correct?",
-                    call. = FALSE)
-            return(NA)
-          }
-        }
-        else {
-          return(
-            jsonlite::parse_json(httr::content(res, "text"),
-                                 simplifyVector = TRUE)
-          )
-        }
-      }
-      else {
-        if (strict) {
-          httr::stop_for_status(res, paste0("get record from <", url, ">"))
-        }
-        else {
-          httr::warn_for_status(res, paste0("get record from <", url, ">"))
-          return(NA)
-        }
-      }
+      httr::stop_for_status(res, paste0("get record from <", url, ">"))
+      stop_for_content(res)
+
+      jsonlite::parse_json(httr::content(res, "text"), simplifyVector = TRUE)
     }
   )
 

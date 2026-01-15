@@ -32,6 +32,7 @@ intchron_countries(c("intimate", "egyptdb"))
 }
 \seealso{
 Other functions for querying IntChron: 
+\code{\link{intchron_get_labcode}()},
 \code{\link{intchron}()}
 }
 \concept{functions for querying IntChron}
