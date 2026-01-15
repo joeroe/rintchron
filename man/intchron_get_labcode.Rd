@@ -30,7 +30,7 @@ intchron_get_labcode("OxA-18955")
 }
 \seealso{
 Other functions for querying IntChron: 
-\code{\link{intchron_hosts}()},
-\code{\link{intchron}()}
+\code{\link{intchron}()},
+\code{\link{intchron_hosts}()}
 }
 \concept{functions for querying IntChron}

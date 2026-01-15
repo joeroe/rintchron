@@ -60,6 +60,7 @@ intchron_resource <- function(request, response, content) {
   )
 }
 
+#' @export
 print.intchron_resource <- function(x, ...) {
   cat("<IntChron ", x$request, ">\n", sep = "")
   str(x$content, max.level = 1)
@@ -140,6 +141,7 @@ intchron_tabulate_series <- function(series_list, header) {
         dplyr::na_if("-")
     )
   )
+}
 
 # Validate ----------------------------------------------------------------
 

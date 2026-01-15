@@ -6,12 +6,7 @@
 \alias{rintchron-package}
 \title{rintchron: Interface to IntChron}
 \description{
-An interface to 'IntChron' (<https://intchron.org)>), an indexing
-    service and exchange format for chronological data such as radiocarbon dates
-    (Bronk Ramsey et al. 2019) <doi:10.1017/RDC.2019.21>. Includes a 
-    user friendly interface for querying databases indexed by 'IntChron', as 
-    well as low  level functions for interacting  directly with the 'IntChron' 
-    API and other resources using its schema.
+An interface to 'IntChron' (\url{https://intchron.org)}), an indexing service and exchange format for chronological data such as radiocarbon dates (Bronk Ramsey et al. 2019) \doi{10.1017/RDC.2019.21}. Includes a user friendly interface for querying databases indexed by 'IntChron', as well as low level functions for interacting directly with the 'IntChron' API and other resources using its schema.
 }
 \seealso{
 Useful links:
