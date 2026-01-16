@@ -81,11 +81,9 @@ intchron <- function(hosts,
 #'
 #' @param lab_code For radiocarbon dates, a vector of lab codes to be retrieved.
 #' @param doi For publications, a vector of DOIs to be retrieved.
-#' @param tabulate If `TRUE` (the default), the data retrieved will be combined
-#'  into a data frame. Set `FALSE` to get the raw responses from IntChron.
 #'
 #' @return
-#' A `tibble`, or if `tabulate = FALSE`, a list, of IntChron responses.
+#' List of IntChron responses
 #'
 #' @family functions for querying IntChron
 #'
@@ -93,16 +91,10 @@ intchron <- function(hosts,
 #'
 #' @examples
 #' intchron_get_labcode("OxA-18955")
-intchron_get_labcode <- function(lab_code, tabulate = TRUE) {
+intchron_get_labcode <- function(lab_code) {
   url <- intchron_url("labcode", lab_code)
   response <- intchron_request(url)
-
-  if (!tabulate) {
-    return(response)
-  }
-  else {
-    return(intchron_tabulate(response, series = TRUE))
-  }
+  lapply(response, \(x) do.call(Project, x))
 }
 
 #' @rdname intchron_get_labcode

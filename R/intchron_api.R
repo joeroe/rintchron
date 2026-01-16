@@ -39,7 +39,13 @@ intchron_request <- function(url, strict = FALSE) {
       httr::stop_for_status(res, paste0("get record from <", url, ">"))
       stop_for_content(res)
 
-      jsonlite::parse_json(httr::content(res, "text"), simplifyVector = TRUE)
+      jsonlite::fromJSON(
+        httr::content(res, "text"),
+        simplifyVector = TRUE,
+        simplifyDataFrame = TRUE,
+        simplifyMatrix = FALSE,
+        flatten = FALSE
+      )
     }
   )
 

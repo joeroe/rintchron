@@ -5,20 +5,17 @@
 \alias{intchron_get_doi}
 \title{Retrieve individual records from IntChron}
 \usage{
-intchron_get_labcode(lab_code, tabulate = TRUE)
+intchron_get_labcode(lab_code)
 
 intchron_get_doi(doi, tabulate = TRUE)
 }
 \arguments{
 \item{lab_code}{For radiocarbon dates, a vector of lab codes to be retrieved.}
 
-\item{tabulate}{If \code{TRUE} (the default), the data retrieved will be combined
-into a data frame. Set \code{FALSE} to get the raw responses from IntChron.}
-
 \item{doi}{For publications, a vector of DOIs to be retrieved.}
 }
 \value{
-A \code{tibble}, or if \code{tabulate = FALSE}, a list, of IntChron responses.
+List of IntChron responses
 }
 \description{
 These functions retrieve individual records from IntChron by their primary
