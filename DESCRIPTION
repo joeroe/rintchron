@@ -17,6 +17,8 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Depends:
+    R (>= 4.3.0)
 Imports: 
     tools,
     utils,
@@ -29,7 +31,8 @@ Imports:
     tibble,
     dplyr,
     readr,
-    magrittr
+    magrittr,
+    S7
 Suggests: 
     knitr,
     roxygen2,
